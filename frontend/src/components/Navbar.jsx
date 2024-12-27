@@ -1,13 +1,16 @@
-import { useState } from "react";
+import { useState , useEffect} from "react";
 import { Code2, Menu, X } from "lucide-react";
-import { Link } from "react-router-dom";
+import { data, Link } from "react-router-dom";
 import { FaRegUser } from "react-icons/fa";
 import { FiShoppingCart } from "react-icons/fi";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { signup, login } from "../api"; // Import the API functions
+import { signup, login } from "../api"; 
+import Badge from '@mui/material/Badge';
 
-const Navbar = () => {
+const Navbar = ({cartCount}) => {
+ 
+  const [userData, setUserData] = useState(null);
   const [isOpen, setIsOpen] = useState(false); // Mobile menu state
   const [isFormOpen, setIsFormOpen] = useState(false); // Form modal state
   const [isLoginForm, setIsLoginForm] = useState(true); // Toggle between login and signup
@@ -19,6 +22,7 @@ const Navbar = () => {
   }); // Form state
 
   const navLinks = [
+    { link: "/", label: "Home" },
     { link: "/ourproducts", label: "Our Products" },
     { link: "/reviews", label: "Reviews" },
     { link: "/trackorder", label: "Track Order" },
@@ -32,6 +36,14 @@ const Navbar = () => {
     { label: "Combination Skin", link: "/categories/combinationskin" },
     { label: "Dry Skin", link: "/categories/dryskin" },
   ];
+
+  useEffect(() => {
+    // Check if user data exists in localStorage
+    const storedUser = localStorage.getItem("userData");
+    if (storedUser) {
+      setUserData(JSON.parse(storedUser));
+    }
+  }, []);
 
   const handleUserClick = () => {
     setIsFormOpen(!isFormOpen);
@@ -56,6 +68,14 @@ const Navbar = () => {
           email: formData.email,
           password: formData.password,
         });
+        const user = {
+          email: formData.email,
+          token: response.token, // Assuming your backend returns a token
+          name: response.name || "User" // Use name from response if available, or default to "User"
+        };
+        localStorage.setItem("isLoggedIn", true);
+        localStorage.setItem("userData", JSON.stringify(user));
+        setUserData(user);
         toast.success("Login successful!");
         console.log("Login successful:", response);
       } catch (error) {
@@ -84,6 +104,40 @@ const Navbar = () => {
     setIsFormOpen(false); // Close form on success
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("userData");
+    setUserData(null);
+    toast.success("Logged out successfully!");
+  };
+
+  const ProfileDropdown = () => (
+    <div className="relative group">
+      <div className="avatar cursor-pointer">
+        <div className="w-8 h-8 rounded-full">
+          <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" alt="profile" />
+        </div>
+      </div>
+      
+      <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 shadow-lg rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+        <div className="px-4 py-3 border-b border-gray-200">
+          <p className="text-sm font-medium text-gray-900">{userData?.name}</p>
+          <p className="text-sm text-gray-500 truncate">{userData?.email}</p>
+        </div>
+        <div className="py-1">
+          <button
+            onClick={handleLogout}
+            className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+          >
+            Sign out
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+
+  //Function to save locale storage
+ 
   return (
     <nav className="sticky top-0 z-50 bg-white border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -119,14 +173,25 @@ const Navbar = () => {
                 </Link>
               )
             )}
+            <Link to="/quiz">
             <button className="ml-2 bg-pink-600 text-white px-4 py-2 rounded-lg hover:bg-pink-700">
               Take the quiz
             </button>
-            <button onClick={handleUserClick} className="ml-2 text-black px-4 py-2 rounded-lg">
-              <FaRegUser />
-            </button>
+            </Link>
+            {localStorage.getItem("isLoggedIn") ? (
+              <ProfileDropdown />
+            ) : (
+              <button onClick={handleUserClick} className="ml-2 text-black px-4 py-2 rounded-lg">
+                <FaRegUser />
+              </button>
+            )}
+            
+            
             <button>
-              <FiShoppingCart />
+            <Badge badgeContent={cartCount} color="success">
+                <FiShoppingCart />
+            </Badge>
+              
             </button>
           </div>
 
