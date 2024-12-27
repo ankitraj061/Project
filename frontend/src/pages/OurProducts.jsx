@@ -32,7 +32,17 @@ const OurProducts = () => {
       price: '₹449',
       image: 'https://via.placeholder.com/300x200?text=Exfoliating+Face+Scrub', // Replace with actual image URL
     },
+    {
+      name: 'SPF 50 Sunscreen',
+      description: 'Broad-spectrum protection to shield your skin from harmful UV rays.',
+      price: '₹599',
+      image: 'https://via.placeholder.com/300x200?text=SPF+50+Sunscreen', // Replace with actual image URL
+    },
   ];
+
+  const handleAddToCart = (productName) => {
+    alert(`Added ${productName} to cart!`);
+  };
 
   return (
     <section className="py-24 bg-white">
@@ -53,7 +63,13 @@ const OurProducts = () => {
               />
               <h3 className="text-xl font-semibold text-gray-900 mb-2">{product.name}</h3>
               <p className="text-gray-600 mb-4">{product.description}</p>
-              <p className="text-lg font-medium text-emerald-700">{product.price}</p>
+              <p className="text-lg font-medium text-emerald-700 mb-4">{product.price}</p>
+              <button
+                onClick={() => handleAddToCart(product.name)}
+                className="w-full py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors duration-200"
+              >
+                Add to Cart
+              </button>
             </div>
           ))}
         </div>

@@ -10,6 +10,13 @@ import Intro from "./components/Intro";
 import Delivery from "./components/Delivery";
 import PersonalizedCare from "./components/PersonalizedCare";
 import FAQ from "./components/FAQ";
+import Reviews from "./pages/Reviews";
+import TrackOrder from "./pages/TrackOrder";
+import OilySkin from "./categories/OilySkin";
+import NormalSkin from "./categories/NormalSkin";
+import CombinationSkin from "./categories/CombinationSkin";
+import DrySkin from "./categories/DrySkin";
+import SensitiveSkin from "./categories/SensitiveSkin";
 
 function App() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
@@ -34,7 +41,17 @@ function App() {
                 </>
               } />
               <Route path="/ourproducts" element={<OurProducts />} /> {/* Add the new route here */}
-              <Route path="/trackorder" element={<h1>Track Order</h1>}></Route>
+              <Route path="/reviews" element={<Reviews />} /> {/* Add the new route here */}
+              <Route path="/trackorder" element={<TrackOrder />}></Route>
+              <Route path="/categories/oilyskin" element={<OilySkin />}></Route>
+
+              <Route path="/categories/normalskin" element={<NormalSkin />}></Route>
+
+              <Route path="/categories/combinationskin" element={<CombinationSkin />}></Route>
+
+              <Route path="/categories/dryskin" element={<DrySkin />}></Route>
+
+              <Route path="/categories/sensitiveskin" element={<SensitiveSkin />}></Route>
             </Routes>
 
 

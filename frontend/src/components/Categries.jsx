@@ -1,6 +1,6 @@
 import React from 'react';
 
-const OurProducts = () => {
+const Categries = () => {
   const products = [
     {
       name: 'Hydrating Face Cream',
@@ -92,4 +92,4 @@ const OurProducts = () => {
   );
 };
 
-export default OurProducts;
+export default Categries;

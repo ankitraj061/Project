@@ -26,10 +26,11 @@ const Navbar = () => {
   ];
 
   const categories = [
-    { label: "oilyskin", link: "/categories/Oily Skin" },
-    { label: "Fashion", link: "/categories/fashion" },
-    { label: "Home & Kitchen", link: "/categories/home-kitchen" },
-    { label: "Books", link: "/categories/books" },
+    { label: "Oily Skin", link: "../categories/oilyskin" },
+    { label: "Normal Skin", link: "/categories/normalskin" },
+    { label: "Sensitive Skin", link: "/categories/sensitiveskin" },
+    { label: "Combination Skin", link: "/categories/combinationskin" },
+    { label: "Dry Skin", link: "/categories/dryskin" },
   ];
 
   const handleUserClick = () => {
