@@ -5,11 +5,18 @@ import { FaRegUser } from "react-icons/fa";
 import { FiShoppingCart } from "react-icons/fi";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { signup, login } from "../api"; // Import the API functions
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false); // Mobile menu state
   const [isFormOpen, setIsFormOpen] = useState(false); // Form modal state
   const [isLoginForm, setIsLoginForm] = useState(true); // Toggle between login and signup
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  }); // Form state
 
   const navLinks = [
     { link: "/ourproducts", label: "Our Products" },
@@ -26,11 +33,54 @@ const Navbar = () => {
   ];
 
   const handleUserClick = () => {
-    setIsFormOpen(!isFormOpen); // Toggle the form/modal visibility
+    setIsFormOpen(!isFormOpen);
   };
 
   const handleFormToggle = () => {
     setIsLoginForm(!isLoginForm); // Toggle between login and signup
+  };
+
+  const handleInputChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Form validation before sending the data
+    if (isLoginForm) {
+      // Login Form
+      try {
+        const response = await login({
+          email: formData.email,
+          password: formData.password,
+        });
+        toast.success("Login successful!");
+        console.log("Login successful:", response);
+      } catch (error) {
+        console.error("Login Error:", error);
+        toast.error(error.message || "Login failed, please try again.");
+      }
+    } else {
+      // Signup Form
+      if (formData.password !== formData.confirmPassword) {
+        alert("Passwords do not match");
+        return;
+      }
+      try {
+        const response = await signup({
+          name: formData.name,
+          email: formData.email,
+          password: formData.password,
+        });
+        toast.success("Signup successful!");
+        console.log("Signup successful:", response);
+      } catch (error) {
+        console.error("Signup Error:", error);
+        toast.error(error.message || "Signup failed, please try again.");
+      }
+    }
+    setIsFormOpen(false); // Close form on success
   };
 
   return (
@@ -46,10 +96,7 @@ const Navbar = () => {
             {navLinks.map((navItem) =>
               navItem.label === "Categories" ? (
                 <div className="relative group" key={navItem.link}>
-                  <Link
-                    to={navItem.link}
-                    className="px-4 py-2 hover:text-pink-600"
-                  >
+                  <Link to={navItem.link} className="px-4 py-2 hover:text-pink-600">
                     {navItem.label}
                   </Link>
                   {/* Dropdown */}
@@ -66,11 +113,7 @@ const Navbar = () => {
                   </div>
                 </div>
               ) : (
-                <Link
-                  key={navItem.link}
-                  to={navItem.link}
-                  className="px-4 py-2 hover:text-pink-600"
-                >
+                <Link key={navItem.link} to={navItem.link} className="px-4 py-2 hover:text-pink-600">
                   {navItem.label}
                 </Link>
               )
@@ -78,10 +121,7 @@ const Navbar = () => {
             <button className="ml-2 bg-pink-600 text-white px-4 py-2 rounded-lg hover:bg-pink-700">
               Take the quiz
             </button>
-            <button
-              onClick={handleUserClick} // Open/close the user form/modal
-              className="ml-2 text-black px-4 py-2 rounded-lg"
-            >
+            <button onClick={handleUserClick} className="ml-2 text-black px-4 py-2 rounded-lg">
               <FaRegUser />
             </button>
             <button>
@@ -117,19 +157,40 @@ const Navbar = () => {
             </button>
 
             {/* Form Content */}
-            <form>
+            <form onSubmit={handleSubmit}>
+              {!isLoginForm && (
+                <div className="mb-4">
+                  <label className="block text-gray-700">Name</label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    className="w-full p-2 border border-gray-300 rounded-lg"
+                    required
+                  />
+                </div>
+              )}
               <div className="mb-4">
-                <label className="block text-gray-700">Username</label>
+                <label className="block text-gray-700">Email</label>
                 <input
-                  type="text"
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
                   className="w-full p-2 border border-gray-300 rounded-lg"
+                  required
                 />
               </div>
               <div className="mb-4">
                 <label className="block text-gray-700">Password</label>
                 <input
                   type="password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleInputChange}
                   className="w-full p-2 border border-gray-300 rounded-lg"
+                  required
                 />
               </div>
               {!isLoginForm && (
@@ -137,7 +198,11 @@ const Navbar = () => {
                   <label className="block text-gray-700">Confirm Password</label>
                   <input
                     type="password"
+                    name="confirmPassword"
+                    value={formData.confirmPassword}
+                    onChange={handleInputChange}
                     className="w-full p-2 border border-gray-300 rounded-lg"
+                    required
                   />
                 </div>
               )}
@@ -154,6 +219,7 @@ const Navbar = () => {
           </div>
         </div>
       )}
+      <ToastContainer />
     </nav>
   );
 };

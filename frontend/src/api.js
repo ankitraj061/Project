@@ -1,35 +1,54 @@
 import axios from 'axios';
 
-// Replace with your server's base URL
-const BASE_URL = 'http://localhost:5000';
-
-// Axios instance for API calls
 const api = axios.create({
-  baseURL: BASE_URL,
+  baseURL: 'http://localhost:5000', // Replace with your backend server URL
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
-// Login API call
-export const login = async ({ email, password }) => {
+export const signup = async (userData) => {
   try {
-    const response = await api.post('/login', { email, password });
+    console.log("Sending signup data:", userData);
+    const response = await api.post('/signup', userData);
     return response.data;
   } catch (error) {
-    console.error('Login API Error:', error.response?.data || error.message);
-    return { success: false, message: error.response?.data?.message || 'Login failed' };
+    // Check if the error response exists and handle accordingly
+    if (error.response) {
+      // If the backend sent a response with an error status
+      console.error("Error response:", error.response.data);
+      throw new Error(error.response.data.message || 'An error occurred during signup');
+    } else if (error.request) {
+      // If no response was received from the backend
+      console.error("Error request:", error.request);
+      throw new Error('No response received from server');
+    } else {
+      // Other errors (e.g., network error)
+      console.error("Error message:", error.message);
+      throw new Error('An unexpected error occurred');
+    }
   }
 };
 
-// Signup API call
-export const signup = async ({ name, email, password }) => {
+export const login = async (userData) => {
   try {
-    const response = await api.post('/signup', { name, email, password });
+    const response = await api.post('/login', userData);
     return response.data;
   } catch (error) {
-    console.error('Signup API Error:', error.response?.data || error.message);
-    return { success: false, message: error.response?.data?.message || 'Signup failed' };
+    // Check if the error response exists and handle accordingly
+    if (error.response) {
+      // If the backend sent a response with an error status
+      console.error("Error response:", error.response.data);
+      throw new Error(error.response.data.message || 'An error occurred during login');
+    } else if (error.request) {
+      // If no response was received from the backend
+      console.error("Error request:", error.request);
+      throw new Error('No response received from server');
+    } else {
+      // Other errors (e.g., network error)
+      console.error("Error message:", error.message);
+      throw new Error('An unexpected error occurred');
+    }
   }
 };
 
