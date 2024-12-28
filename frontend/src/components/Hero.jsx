@@ -26,7 +26,7 @@ const Hero = () => {
         </p> */}
 
         {/* Buttons */}
-        <div className="space-x-4 flex justify-end py-24 justify-end mt-48">
+        <div className="space-x-4 flex justify-end py-24 justify-end mt-60">
           <Link to={'/quiz'}>
             <button className="bg-emerald-600 text-white px-8 py-3 rounded-full hover:bg-emerald-700 transition-colors">
               Know Your Skin
