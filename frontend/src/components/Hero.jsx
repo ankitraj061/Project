@@ -39,7 +39,7 @@ const Hero = () => {
           <div className="space-x-4">
             <Link to={'/quiz'}>
             <button className="bg-emerald-600 text-white px-8 py-3 rounded-full hover:bg-emerald-700 transition-colors">
-              Take Your Skin Quiz
+              Know Your Skin
             </button>
 
             </Link>
