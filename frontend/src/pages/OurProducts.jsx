@@ -1,4 +1,6 @@
+
 import React from 'react';
+import { Link } from 'react-router-dom'; // Import Link if you want to use routing
 import oily1 from '../assets/oily1.png';
 import oily2 from '../assets/oily2.png';
 import oily3 from '../assets/oily3.png';
@@ -277,17 +279,22 @@ const OurProducts = () => {
               key={product.id}
               className="border rounded-lg p-6 bg-emerald-50 shadow hover:shadow-lg transition-shadow duration-200"
             >
-              <img
-                src={product.image}
-                alt={product.name}
-                className="w-full h-48 object-cover rounded-lg mb-4"
-              />
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">{product.name}</h3>
-              <p className="text-gray-600 mb-4">{product.description}</p>
-              <div className="flex justify-between items-center mb-4">
-                <p className="text-lg font-medium text-emerald-700">{product.price}</p>
-                {renderStars(product.rating)}
-              </div>
+              {/* Make the entire product card clickable */}
+              <Link to={`/product/${product.id}`} className="block">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-48 object-cover rounded-lg mb-4"
+                />
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">{product.name}</h3>
+                <p className="text-gray-600 mb-4">{product.description}</p>
+                <div className="flex justify-between items-center mb-4">
+                  <p className="text-lg font-medium text-emerald-700">{product.price}</p>
+                  {renderStars(product.rating)}
+                </div>
+              </Link>
+
+              {/* Cart Button */}
               {!checkIfAddedInCart(product.id) ? (
                 <button
                   onClick={() => handleAddToCart(product)}

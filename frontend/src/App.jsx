@@ -22,6 +22,9 @@ import PopularCategory from "./components/PopularCategory";
 import UpcomingCategory from "./components/UpcomingCategory";
 import Quiz from "./pages/Quiz";
 import Cart from "./pages/Cart";
+import LandingPage from "./components/LandingPage";
+import LandingPage2 from "./components/LandingPage2";
+
 
 function App() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
@@ -71,6 +74,8 @@ function App() {
               <Route path="/quiz" element={<Quiz />}></Route>
 
               <Route path="/cart" element={<Cart />}></Route>
+              <Route path ="/product/1" element={<LandingPage />}></Route>
+              <Route path ="/product/2" element={<LandingPage2 />}></Route>
             </Routes>
 
 

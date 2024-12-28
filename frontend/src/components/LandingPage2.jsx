@@ -1,15 +1,15 @@
 import React from 'react';
-import img1 from '../assets/oily1.png';
+import img2 from '../assets/oily2.png';
 
-const LandingPage = () => {
+const LandingPage2 = () => {
   return (
     <div className="landing-page font-poppins">
 
       {/* Hero Section */}
       <section className="hero text-center bg-[#F9F9F9] py-4 px-4 sm:px-8 lg:px-16">
-        <h1 className="text-4xl sm:text-5xl font-bold text-[#2C3E50] leading-tight">Vitamin C Face Serum</h1>
+        <h1 className="text-4xl sm:text-5xl font-bold text-[#2C3E50] leading-tight">Deep Nourishing Body Lotion</h1>
         {/* <p className="text-lg sm:text-xl text-[#7F8C8D] mt-4">Catchy Tagline or Unique Selling Point</p> */}
-        <img src={img1} alt="Product Image" className="mx-auto mt-8 rounded-lg shadow-lg max-w-full max-h-[400px] object-contain" />
+        <img src={img2} alt="Product Image" className="mx-auto mt-8 rounded-lg shadow-lg max-w-full max-h-[400px] object-contain" />
         <div className="cta-buttons mt-8 flex justify-center space-x-4">
           <button className="bg-pink-600 text-white px-8 py-3 rounded-lg shadow-md hover:bg-pink-700 transform transition duration-300 hover:scale-105">Buy Now</button>
           <button className="bg-[#2ECC71] text-white px-8 py-3 rounded-lg shadow-md hover:bg-[#27AE60] transform transition duration-300 hover:scale-105">Learn More</button>
@@ -76,4 +76,4 @@ const LandingPage = () => {
   );
 };
 
-export default LandingPage;
+export default LandingPage2;

@@ -1,4 +1,4 @@
-import ecofriendlyImg from '../assets/ecofriendly.jpeg.jpg'; // Replace with the actual path to your image
+import transparencyImg  from '../assets/transparency.jpeg'; // Replace with the actual path to your image
 import personalisedImg from '../assets/personalised.jpeg.jpg'; // Replace with the actual path to your image
 import highQualityImg from '../assets/quality.jpg'; // Replace with the actual path to your image
 
@@ -12,16 +12,6 @@ const Intro = () => {
         Discover our range of eco-friendly skincare products, thoughtfully crafted to nourish your skin while being kind to the planet. Each product is made with sustainable ingredients and environmentally conscious packaging.
       </p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-16 mt-8 p-0">
-        <div className="card bg-white shadow-lg rounded-lg p-6 text-center hover:scale-105 transition-transform duration-300">
-          <div className="w-40 h-40 mx-auto mb-4">
-            <img
-              src={ecofriendlyImg}
-              alt="Ecofriendly Product"
-              className="w-full h-full object-cover rounded-lg"
-            />
-          </div>
-          <h3 className="text-xl font-bold text-gray-800">Ecofriendly Product</h3>
-        </div>
         <div className="card bg-white shadow-lg rounded-lg p-6 text-center hover:scale-105 transition-transform duration-300">
           <div className="w-40 h-40 mx-auto mb-4">
             <img
@@ -41,7 +31,20 @@ const Intro = () => {
             />
           </div>
           <h3 className="text-xl font-bold text-gray-800">
-            High Quality and Affordable Product
+            High Quality and Yet Affordable 
+          </h3>
+        </div>
+
+        <div className="card bg-white shadow-lg rounded-lg p-6 text-center hover:scale-105 transition-transform duration-300">
+          <div className="w-40 h-40 mx-auto mb-4">
+            <img
+              src={transparencyImg}
+              alt="High Quality and Affordable Product"
+              className="w-full h-full object-cover rounded-lg"
+            />
+          </div>
+          <h3 className="text-xl font-bold text-gray-800">
+            Transparency
           </h3>
         </div>
       </div>
