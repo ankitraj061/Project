@@ -3,7 +3,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { useState } from "react";
 import OurProducts from "./pages/OurProducts"; 
-import Discount from "./components/Discount";
+
 import Hero from "./components/Hero";
 import Ingredients from "./components/Ingredients";
 import Intro from "./components/Intro";
@@ -38,7 +38,7 @@ function App() {
 
   return (
       <>
-        <Discount />
+       
         <Navbar setIsLoginModalOpen={setIsLoginModalOpen}  cartCount={cartCount}/>
         <div className={isLoginModalOpen ? "blur-background" : ""}>
           <main className="app-main">
