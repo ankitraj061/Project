@@ -7,8 +7,12 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { signup, login } from "../api"; 
 import Badge from '@mui/material/Badge';
+import {useCart} from "../context/ProductContext";
 
 const Navbar = ({cartCount}) => {
+  const {products,addProduct}=useCart();
+  console.log(products);
+  console.log(addProduct)
  
   const [userData, setUserData] = useState(null);
   const [isOpen, setIsOpen] = useState(false); // Mobile menu state
@@ -143,11 +147,11 @@ const Navbar = ({cartCount}) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0 flex items-center">
-            <h1 className="text-2xl font-serif text-emerald-600">EcoGlam</h1>
+            <h1 className="text-3xl font-bold font-serif text-emerald-600">EcoGlam</h1>
           </div>
 
           {/* Desktop Links */}
-          <div className="hidden lg:flex lg:items-center space-x-2">
+          <div className="hidden lg:flex lg:items-center space-x-3">
             {navLinks.map((navItem) =>
               navItem.label === "Categories" ? (
                 <div className="relative group" key={navItem.link}>
@@ -156,16 +160,16 @@ const Navbar = ({cartCount}) => {
                   </Link>
                   {/* Dropdown */}
                   <div className="absolute left-0 mt-2 w-48 bg-white border border-gray-200 shadow-lg rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
-                    {categories.map((category) => (
-                      <Link
-                        key={category.link}
-                        to={category.link}
-                        className="block px-4 py-2 hover:bg-pink-100"
-                      >
-                        {category.label}
-                      </Link>
-                    ))}
-                  </div>
+    {categories.map((category) => (
+      <Link
+        key={category.link}
+        to={category.link}
+        className="block px-4 py-2 hover:bg-pink-100"
+      >
+        {category.label}
+      </Link>
+    ))}
+  </div>
                 </div>
               ) : (
                 <Link key={navItem.link} to={navItem.link} className="px-4 py-2 hover:text-pink-600">
@@ -174,12 +178,12 @@ const Navbar = ({cartCount}) => {
               )
             )}
             <Link to="/quiz">
-            <button className="ml-2 bg-pink-600 text-white px-4 py-2 rounded-lg hover:bg-pink-700">
-              Take the quiz
+            <button className="ml-2 mr-2 bg-pink-600 text-white px-4 py-2 rounded-lg hover:bg-pink-700">
+              Know Your Skin
             </button>
             </Link>
             {localStorage.getItem("isLoggedIn") ? (
-              <ProfileDropdown />
+              <ProfileDropdown className= "rounded-full"/>
             ) : (
               <button onClick={handleUserClick} className="ml-2 text-black px-4 py-2 rounded-lg">
                 <FaRegUser />
@@ -188,10 +192,19 @@ const Navbar = ({cartCount}) => {
             
             
             <button>
-            <Badge badgeContent={cartCount} color="success">
-                <FiShoppingCart />
-            </Badge>
-              
+            <Link to="/cart">
+            {/* <Badge badgeContent={products.length} color="success"> */}
+            <div className="relative">
+      <FiShoppingCart className="text-2xl" />
+      <span className="absolute -top-2 -right-3 bg-red-600 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+        {products.length}
+      </span>
+    </div>
+            {/* {products.length} */}
+            {/* </Badge> */}
+            
+            </Link>
+            
             </button>
           </div>
 

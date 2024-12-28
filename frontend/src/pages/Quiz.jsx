@@ -49,18 +49,52 @@ function SkincareQuiz() {
   };
 
   const getRecommendation = () => {
-    // Logic to determine skincare type based on answers
+    let products = [];
+
+    // Logic to determine skincare type and suggest products based on answers
     if (answers[0] === "Tight and dry" || answers[4] === "Hydration") {
-      return "Dry Skin - Use hydrating and gentle products.";
+      products = [
+        "Moisturizing Facial Cleanser",
+        "Intense Hydration Cream"
+      ];
+      return {
+        skinType: "Dry Skin",
+        products,
+      };
     }
+
     if (answers[0] === "Oily" || answers[4] === "Oil control") {
-      return "Oily Skin - Use mattifying and oil-control products.";
+      products = [
+        "Oil Control Cleanser",
+        "Oil-Free Mattifying Moisturizer"
+      ];
+      return {
+        skinType: "Oily Skin",
+        products,
+      };
     }
+
     if (answers[0] === "Dry in some areas and oily in others" || answers[4] === "Balance") {
-      return "Combination Skin - Use products that balance oil and moisture.";
+      products = [
+        "Balancing Hydrating Cleanser",
+        "Multi-Action Moisturizer"
+      ];
+      return {
+        skinType: "Combination Skin",
+        products,
+      };
     }
-    return "Normal Skin - Maintain a simple and balanced routine.";
+
+    return {
+      skinType: "Normal Skin",
+      products: [
+        "Gentle Cleanser",
+        "Light Moisturizer"
+      ]
+    };
   };
+
+  const recommendation = getRecommendation();
 
   return (
     <div className="min-h-screen bg-emerald-50 flex flex-col items-center justify-center px-4">
@@ -108,7 +142,12 @@ function SkincareQuiz() {
         {step > questions.length && (
           <div>
             <h1 className="text-xl font-semibold mb-4">Hi {name},</h1>
-            <p className="text-gray-600 mb-4">{getRecommendation()}</p>
+            <p className="text-gray-600 mb-4">{`Based on your answers, we recommend the following for ${recommendation.skinType}:`}</p>
+            <ul className="list-disc pl-6 mb-4">
+              {recommendation.products.map((product, index) => (
+                <li key={index}>{product}</li>
+              ))}
+            </ul>
             <button
               onClick={handleRestart}
               className="w-full py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700"

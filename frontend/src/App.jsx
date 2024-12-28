@@ -21,6 +21,7 @@ import UseProduct from "./components/UseProduct";
 import PopularCategory from "./components/PopularCategory";
 import UpcomingCategory from "./components/UpcomingCategory";
 import Quiz from "./pages/Quiz";
+import Cart from "./pages/Cart";
 
 function App() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
@@ -68,6 +69,8 @@ function App() {
               <Route path="/categories/sensitiveskin" element={<SensitiveSkin addToCart={addToCart}/>}></Route>
 
               <Route path="/quiz" element={<Quiz />}></Route>
+
+              <Route path="/cart" element={<Cart />}></Route>
             </Routes>
 
 

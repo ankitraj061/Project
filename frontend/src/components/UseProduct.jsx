@@ -1,9 +1,9 @@
 import React from 'react';
-import womenCareImage from '../assets/womenCare.avif'
+import womenCareImage from '../assets/usepro.jpeg.jpg';
 
 const UseProduct = () => {
   return (
-    <section className="flex items-center justify-between p-8 my-8">
+    <section className="flex items-center justify-between p-8 my-8 pt-0 pb-0">
       <div className="flex-1 pr-8 pl-20">
         <h2 className="text-4xl font-serif text-gray-900 mb-6 ">The Future of Comfort and Well-Being</h2>
         <p className="text-lg text-gray-600">

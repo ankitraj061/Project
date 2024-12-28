@@ -37,9 +37,13 @@ const Hero = () => {
           <br />
           <br />
           <div className="space-x-4">
+            <Link to={'/quiz'}>
             <button className="bg-emerald-600 text-white px-8 py-3 rounded-full hover:bg-emerald-700 transition-colors">
               Take Your Skin Quiz
             </button>
+
+            </Link>
+            
             <Link to={'/ourproducts'}>
               <button className="bg-white text-emerald-600 px-8 py-3 rounded-full border-2 border-emerald-600 hover:bg-emerald-50 transition-colors">
                 Shop Our Products

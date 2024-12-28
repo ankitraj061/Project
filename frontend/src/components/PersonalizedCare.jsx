@@ -3,7 +3,7 @@ import personalisedImg from '../assets/personlized.jpg';
 
 const PersonalizedCare = () => {
   return (
-    <section className="py-24 bg-white">
+    <section className="py-12 bg-white">
       <div className="max-w-7x1 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-center">
           <div className="md:w-1/2 mb-4 md:mb-0"> {/* Reduced gap by changing mb-8 to mb-4 */}
