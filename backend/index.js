@@ -2,22 +2,22 @@ const express = require('express');
 const mysql = require('mysql2');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const cors = require('cors');  // Import CORS
-require('dotenv').config();  // Import dotenv to use environment variables
+const cors = require('cors');  
+require('dotenv').config();  
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Middleware
-app.use(express.json());  // Use express.json() instead of body-parser
-app.use(cors()); // Enable CORS for all routes
 
-// MySQL connection
+app.use(express.json());  
+app.use(cors()); 
+
+
 const db = mysql.createConnection({
   host: 'localhost',
-  user: process.env.DB_USER, // Use environment variable for security
-  password: process.env.DB_PASSWORD, // Use environment variable for security
-  database: process.env.DB_NAME, // Use environment variable for database name
+  user: process.env.DB_USER, 
+  password: process.env.DB_PASSWORD, 
+  database: process.env.DB_NAME, 
 });
 
 db.connect((err) => {
@@ -25,25 +25,25 @@ db.connect((err) => {
   console.log('MySQL connected');
 });
 
-// Signup Route
+
 app.post('/signup', async (req, res) => {
   const { name, email, password } = req.body;
 
-  // Check if the email already exists
+  
   db.query('SELECT * FROM users WHERE email = ?', [email], async (err, result) => {
     if (err) {
-      console.error(err); // Log error for debugging
+      console.error(err); 
       return res.status(500).json({ message: 'Server error' });
     }
 
     if (result.length > 0) {
-      // If email already exists
+      
       
       return res.status(400).json({ message: 'Email already registered' });
     }
 
     try {
-      // If email is not found, hash the password and insert the user
+     
       const hashedPassword = await bcrypt.hash(password, 10);
 
       db.query(

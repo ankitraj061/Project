@@ -12,7 +12,7 @@ const LandingPage2 = () => {
         <img src={img2} alt="Product Image" className="mx-auto mt-8 rounded-lg shadow-lg max-w-full max-h-[400px] object-contain" />
         <div className="cta-buttons mt-8 flex justify-center space-x-4">
           <button className="bg-pink-600 text-white px-8 py-3 rounded-lg shadow-md hover:bg-pink-700 transform transition duration-300 hover:scale-105">Buy Now</button>
-          <button className="bg-[#2ECC71] text-white px-8 py-3 rounded-lg shadow-md hover:bg-[#27AE60] transform transition duration-300 hover:scale-105">Learn More</button>
+          
         </div>
       </section>
 
