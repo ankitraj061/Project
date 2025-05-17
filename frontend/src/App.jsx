@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { useState } from "react";
@@ -22,8 +22,7 @@ import PopularCategory from "./components/PopularCategory";
 import UpcomingCategory from "./components/UpcomingCategory";
 import Quiz from "./pages/Quiz";
 import Cart from "./pages/Cart";
-import LandingPage from "./components/LandingPage";
-import LandingPage2 from "./components/LandingPage2";
+import ProductDetails from './components/ProductDetails';
 
 
 function App() {
@@ -74,8 +73,7 @@ function App() {
               <Route path="/quiz" element={<Quiz />}></Route>
 
               <Route path="/cart" element={<Cart />}></Route>
-              <Route path ="/product/1" element={<LandingPage />}></Route>
-              <Route path ="/product/2" element={<LandingPage2 />}></Route>
+               <Route path="/product/:id" element={<ProductDetails />} />
             </Routes>
 
 

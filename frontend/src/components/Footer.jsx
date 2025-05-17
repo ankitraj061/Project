@@ -1,4 +1,3 @@
-import React from 'react';
 
 const Footer = () => {
   return (
@@ -27,7 +26,7 @@ const Footer = () => {
         </div>
         
         <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-          <p>©2024 EcoGlam | All Rights Reserved</p>
+          <p>©2025 EcoGlam | All Rights Reserved</p>
         </div>
       </div>
     </footer>

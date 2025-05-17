@@ -1,5 +1,5 @@
-import { useState } from "react";
-import MyRecommendationProducts from "./Recomandation";
+import React, { useState } from "react";
+import MyRecommendationProducts from "./Recommendation";
 
 function SkincareQuiz() {
   const [step, setStep] = useState(0);
@@ -69,7 +69,7 @@ function SkincareQuiz() {
   };
 
   const handleAnswer = (option) => {
-  
+    debugger;
     setAnswers({ ...answers, [step]: option });
 
     if (step < questions.length - 1) {
@@ -146,7 +146,7 @@ function SkincareQuiz() {
             {step === questions.length && recommendation && (
               <div>
                 <h1 className="text-xl font-semibold mb-4">Hi {name},</h1>
-                <p className="text-gray-600 mb-4">{`Based on your answers, we recommend the following for ${recommendation.skinType}:`}</p>
+                <p className="text-gray-600 mb-4">{Based on your answers, we recommend the following for ${recommendation.skinType}:}</p>
                 <ul className="list-disc pl-6 mb-4">
                   {recommendation.products.map((product, index) => (
                     <li key={index}>{product}</li>

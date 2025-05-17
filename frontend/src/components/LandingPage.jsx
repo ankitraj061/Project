@@ -1,4 +1,4 @@
-import React from 'react';
+
 import img1 from '../assets/oily1.png';
 
 const LandingPage = () => {
@@ -55,7 +55,7 @@ const LandingPage = () => {
 
       {/* Pricing Section */}
       <section className="pricing text-center py-12 px-6 sm:px-8 bg-gradient-to-r from-[#16A085] to-[#1ABC9C] text-white">
-        <h2 className="text-4xl sm:text-5xl font-semibold">Price: $29.99</h2>
+        <h2 className="text-4xl sm:text-5xl font-semibold">Price: 399</h2>
         <p className="text-xl sm:text-2xl mt-4">Discount: 20% off for a limited time!</p>
         <button className="bg-[#E74C3C] text-white px-8 py-3 rounded-lg shadow-md mt-6 hover:bg-[#C0392B] transform transition duration-300 hover:scale-105">Buy Now</button>
       </section>
