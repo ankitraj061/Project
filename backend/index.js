@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
 app.use(cors({
-  origin: 'https://ecoglam.vercel.app/', // your Vercel frontend URL
+  origin: 'https://ecoglam.vercel.app', // your Vercel frontend URL
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
 }));
