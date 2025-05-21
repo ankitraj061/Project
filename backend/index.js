@@ -1,114 +1,103 @@
 const express = require('express');
-const mysql = require('mysql2');
+const { Pool } = require('pg');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const cors = require('cors');  
-require('dotenv').config();  
+const cors = require('cors');
+require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+app.use(express.json());
+app.use(cors());
 
-app.use(express.json());  
-app.use(cors()); 
-
-
-const db = mysql.createConnection({
-  host: 'localhost',
-  user: process.env.DB_USER, 
-  password: process.env.DB_PASSWORD, 
-  database: process.env.DB_NAME, 
+// Create PostgreSQL connection pool
+const pool = new Pool({
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT || 5432,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
 });
 
-db.connect((err) => {
-  if (err) throw err;
-  console.log('MySQL connected');
+// Test DB connection
+pool.connect((err, client, release) => {
+  if (err) {
+    return console.error('Error acquiring client', err.stack);
+  }
+  console.log('PostgreSQL connected');
+  release();
 });
 
-
+// Signup route
 app.post('/signup', async (req, res) => {
   const { name, email, password } = req.body;
 
-  
-  db.query('SELECT * FROM users WHERE email = ?', [email], async (err, result) => {
-    if (err) {
-      console.error(err); 
-      return res.status(500).json({ message: 'Server error' });
-    }
-
-    if (result.length > 0) {
-      
-      
+  try {
+    // Check if email already exists
+    const { rows } = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
+    if (rows.length > 0) {
       return res.status(400).json({ message: 'Email already registered' });
     }
 
-    try {
-     
-      const hashedPassword = await bcrypt.hash(password, 10);
+    // Hash password
+    const hashedPassword = await bcrypt.hash(password, 10);
 
-      db.query(
-        'INSERT INTO users (name, email, password) VALUES (?, ?, ?)',
-        [name, email, hashedPassword],
-        (err, result) => {
-          if (err) {
-            console.error(err); // Log error for debugging
-            return res.status(500).json({ message: 'Error while signing up' });
-          }
-          return res.status(200).json({ message: 'User registered successfully' });
-        }
-      );
-    } catch (err) {
-      console.error(err); // Log error for debugging
-      return res.status(500).json({ message: 'Server error' });
-    }
-  });
+    // Insert user
+    await pool.query(
+      'INSERT INTO users (name, email, password) VALUES ($1, $2, $3)',
+      [name, email, hashedPassword]
+    );
+
+    res.status(200).json({ message: 'User registered successfully' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
 });
 
-// Login Route
+// Login route
 app.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
-  db.query('SELECT * FROM users WHERE email = ?', [email], async (err, result) => {
-    if (err) {
-      console.error(err); // Log error for debugging
-      return res.status(500).json({ message: 'Server error' });
-    }
-
-    if (result.length === 0) {
+  try {
+    const { rows } = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
+    if (rows.length === 0) {
       return res.status(400).json({ message: 'User not found' });
     }
 
-    const user = result[0];
+    const user = rows[0];
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       return res.status(400).json({ message: 'Invalid credentials' });
     }
 
-    // Create JWT token
+    // Generate JWT token
     const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
     res.status(200).json({ message: 'Login successful', token });
-  });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
 });
 
-
-// Middleware to protect routes that require authentication
+// JWT auth middleware
 const authenticateJWT = (req, res, next) => {
-  const token = req.headers['authorization']?.split(' ')[1]; // Get token from Authorization header
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
 
   if (!token) {
     return res.status(401).json({ message: 'Access denied' });
   }
 
   jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
-    if (err) {
-      return res.status(403).json({ message: 'Invalid token' });
-    }
+    if (err) return res.status(403).json({ message: 'Invalid token' });
     req.user = user;
     next();
   });
 };
 
-// Example of a protected route
+// Protected route example
 app.get('/protected', authenticateJWT, (req, res) => {
   res.status(200).json({ message: 'This is a protected route', user: req.user });
 });
