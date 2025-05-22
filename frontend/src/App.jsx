@@ -23,6 +23,7 @@ import UpcomingCategory from "./components/UpcomingCategory";
 import Quiz from "./pages/Quiz";
 import Cart from "./pages/Cart";
 import ProductDetails from './components/ProductDetails';
+import Categories from "./components/Categories";
 
 
 function App() {
@@ -60,6 +61,7 @@ function App() {
               <Route path="/ourproducts" element={<OurProducts addToCart={addToCart} />} /> {/* Add the new route here */}
               <Route path="/reviews" element={<Reviews />} /> {/* Add the new route here */}
               <Route path="/trackorder" element={<TrackOrder />}></Route>
+              <Route path="/categories" element={<Categories />}></Route>
               <Route path="/categories/oilyskin" element={<OilySkin  addToCart={addToCart}/>}></Route>
 
               <Route path="/categories/normalskin" element={<NormalSkin addToCart={addToCart}/>}></Route>
