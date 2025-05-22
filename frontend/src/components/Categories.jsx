@@ -84,7 +84,8 @@ const Categories = () => {
               className="cursor-pointer group relative rounded-xl overflow-hidden"
             >
               {/* Card Container with shadow */}
-              <div className="relative h-full bg-white rounded-xl overflow-hidden shadow-md group-hover:shadow-xl transition-all duration-300">
+              <div className="relative h-full bg-pink-200 rounded-xl overflow-hidden shadow-md group-hover:shadow-xl transition-all duration-300">
+
                 {/* Background gradient overlay */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-90 transition-opacity duration-300 z-10`}></div>
                 

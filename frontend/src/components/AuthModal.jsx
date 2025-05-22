@@ -1,5 +1,6 @@
 // src/components/AuthModal.jsx
-import { X } from "lucide-react";
+import React, { useState } from "react";
+import { X, Loader2 } from "lucide-react";
 
 const AuthModal = ({
   isLoginForm,
@@ -9,6 +10,18 @@ const AuthModal = ({
   handleSubmit,
   handleUserClick,
 }) => {
+  const [loading, setLoading] = useState(false);
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      await handleSubmit(e);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center z-50">
       <div className="bg-white p-6 rounded-lg w-96 relative">
@@ -25,13 +38,14 @@ const AuthModal = ({
         <button
           onClick={handleFormToggle}
           className="text-sm text-blue-600 mb-4 inline-block"
+          disabled={loading}
         >
           {isLoginForm
             ? "Don't have an account? Sign up"
             : "Already have an account? Log in"}
         </button>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={onSubmit}>
           {!isLoginForm && (
             <div className="mb-4">
               <label className="block text-gray-700">Name</label>
@@ -42,6 +56,7 @@ const AuthModal = ({
                 onChange={handleInputChange}
                 className="w-full p-2 border border-gray-300 rounded-lg"
                 required
+                disabled={loading}
               />
             </div>
           )}
@@ -54,6 +69,7 @@ const AuthModal = ({
               onChange={handleInputChange}
               className="w-full p-2 border border-gray-300 rounded-lg"
               required
+              disabled={loading}
             />
           </div>
           <div className="mb-4">
@@ -65,6 +81,7 @@ const AuthModal = ({
               onChange={handleInputChange}
               className="w-full p-2 border border-gray-300 rounded-lg"
               required
+              disabled={loading}
             />
           </div>
           {!isLoginForm && (
@@ -77,14 +94,23 @@ const AuthModal = ({
                 onChange={handleInputChange}
                 className="w-full p-2 border border-gray-300 rounded-lg"
                 required
+                disabled={loading}
               />
             </div>
           )}
           <button
             type="submit"
-            className="w-full bg-pink-600 text-white p-2 rounded-lg hover:bg-pink-700"
+            className="w-full flex justify-center items-center bg-pink-600 text-white p-2 rounded-lg hover:bg-pink-700 disabled:opacity-50"
+            disabled={loading}
           >
-            {isLoginForm ? "Login" : "Sign Up"}
+            {loading ? (
+              <>
+                <Loader2 className="animate-spin h-5 w-5 mr-2" />{" "}
+                {isLoginForm ? "Logging in..." : "Signing up..."}
+              </>
+            ) : (
+              isLoginForm ? "Login" : "Sign Up"
+            )}
           </button>
         </form>
       </div>

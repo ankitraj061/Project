@@ -28,30 +28,35 @@ const FAQ = () => {
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-20 bg-gradient-to-b from-white via-gray-50 to-white">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl font-serif text-center text-gray-900 mb-16">
-          FAQs
+        <h2 className="text-4xl font-bold text-center text-gray-900 mb-14 tracking-tight">
+          Frequently Asked Questions
         </h2>
-        <div className="space-y-4">
+        <div className="space-y-5">
           {faqs.map((faq, index) => (
-            <div key={index} className="border rounded-lg">
+            <div
+              key={index}
+              className="border border-gray-200 rounded-2xl shadow-sm overflow-hidden transition duration-300 bg-white"
+            >
               <button
-                className="w-full px-6 py-4 flex justify-between items-center text-left"
+                className="w-full px-6 py-5 flex justify-between items-center text-left hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-pink-500"
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
               >
                 <span className="text-lg font-medium text-gray-900">{faq.question}</span>
                 {openIndex === index ? (
-                  <ChevronUp className="w-5 h-5 text-gray-500" />
+                  <ChevronUp className="w-5 h-5 text-pink-500" />
                 ) : (
                   <ChevronDown className="w-5 h-5 text-gray-500" />
                 )}
               </button>
-              {openIndex === index && (
-                <div className="px-6 pb-4">
-                  <p className="text-gray-600">{faq.answer}</p>
-                </div>
-              )}
+              <div
+                className={`px-6 pb-5 transition-all duration-300 text-gray-600 ${
+                  openIndex === index ? 'max-h-screen opacity-100' : 'max-h-0 overflow-hidden opacity-0'
+                }`}
+              >
+                <p className="text-base">{faq.answer}</p>
+              </div>
             </div>
           ))}
         </div>

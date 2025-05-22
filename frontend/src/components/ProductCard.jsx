@@ -48,7 +48,7 @@ const ProductCard = ({ product, isInCart, onAdd, onRemove, showActions = true })
               onClick={() => onAdd(product)}
               className="w-full py-3 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 transition-colors duration-300"
             >
-              Add to Cart
+              Shop Now
             </button>
           ) : (
             <button
