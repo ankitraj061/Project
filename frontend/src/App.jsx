@@ -24,6 +24,7 @@ import Quiz from "./pages/Quiz";
 import Cart from "./pages/Cart";
 import ProductDetails from './components/ProductDetails';
 import Categories from "./components/Categories";
+import FaceProductsChatbot from "./components/FaceProductsChatbot";
 
 
 function App() {
@@ -81,8 +82,11 @@ function App() {
 
           </main>
         </div>
+        
         <Delivery></Delivery>
+         
         <Footer />
+       
 
         {/* Modal for Login/Signup handled in Navbar */}
         {isLoginModalOpen && (
@@ -90,6 +94,7 @@ function App() {
             {/* Login/Signup form already handled in the Navbar component */}
           </div>
         )}
+        <FaceProductsChatbot></FaceProductsChatbot>
       </>
   );
 }

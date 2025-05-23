@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
-import { CheckCircle, ArrowRight, ArrowLeft, User, Sparkles, RefreshCw, ShoppingBag, Star, Heart } from "lucide-react";
+import { CheckCircle, ArrowRight, ArrowLeft, User, Sparkles, RefreshCw, ShoppingBag, Star, Heart, Check } from "lucide-react";
 import myProducts from "../data/myProducts.json";
+import ProductCard from "../components/ProductCard";
+import { useCart } from "../context/ProductContext";
 
 function SkincareQuiz() {
   const [step, setStep] = useState(0);
@@ -11,6 +13,25 @@ function SkincareQuiz() {
   const [showProducts, setShowProducts] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const { products , addProduct, removeProduct } = useCart();
+
+  const handleOnAddToCart = (product) => {
+    addProduct({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      description: product.description,
+      quantity: 1,
+    });
+  };
+  const handleOnRemoveFromCart = (id) => {
+    removeProduct(id);
+  };
+
+  const checkIfAddedInCart = (id) => {
+    return products.find((el) => el.id === id);
+  };
 
   const questions = [
     {
@@ -228,44 +249,7 @@ function SkincareQuiz() {
     return categories;
   };
 
-  const ProductCard = ({ product }) => (
-    <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-      <div className="relative mb-4">
-        <img 
-          src={product.image || product.imageUrl || "/api/placeholder/200/200"} 
-          alt={product.name || product.title}
-          className="w-full h-48 object-cover rounded-xl"
-        />
-        <button className="absolute top-3 right-3 p-2 bg-white rounded-full shadow-md hover:bg-pink-50 transition-colors">
-          <Heart className="w-5 h-5 text-gray-400 hover:text-pink-500" />
-        </button>
-        {product.category && (
-          <span className="absolute bottom-3 left-3 bg-black bg-opacity-60 text-white text-xs px-2 py-1 rounded-full capitalize">
-            {product.category}
-          </span>
-        )}
-      </div>
-      
-      <div className="space-y-3">
-        <h3 className="font-semibold text-lg text-gray-800">{product.name || product.title}</h3>
-        <p className="text-gray-600 text-sm line-clamp-2">{product.description || "Premium skincare product"}</p>
-        
-        <div className="flex items-center justify-between">
-          <div className="flex items-center">
-            <Star className="w-4 h-4 text-yellow-400 fill-current" />
-            <span className="text-sm text-gray-600 ml-1">{product.rating || "4.5"}</span>
-          </div>
-          <span className="text-xl font-bold text-gray-800">
-            {product.price || product.cost || "29.99"}
-          </span>
-        </div>
-        
-        <button className="w-full py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold rounded-xl hover:from-pink-600 hover:to-purple-700 transition-all duration-300">
-          Add to Cart
-        </button>
-      </div>
-    </div>
-  );
+  
 
   const handlePrevious = () => {
     if (step > 1) {
@@ -338,8 +322,15 @@ function SkincareQuiz() {
           {displayProducts.length > 0 ? (
             <div className="mb-12">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                {displayProducts.map((product, index) => (
-                  <ProductCard key={product.id || index} product={product} />
+                {displayProducts.map((product) => (
+                  <ProductCard
+                  key={product.id} 
+                  product={product}
+                  isInCart={checkIfAddedInCart(product.id)}
+                  onAdd={handleOnAddToCart}
+                  onRemove={handleOnRemoveFromCart}
+                
+                  />
                 ))}
               </div>
             </div>

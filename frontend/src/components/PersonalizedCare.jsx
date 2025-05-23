@@ -1,7 +1,8 @@
-import React from 'react';
+import {useNavigate}from 'react-router-dom';
 import personalisedImg from '../assets/personlized.jpg';
 
 const PersonalizedCare = () => {
+  const navigate = useNavigate();
   const benefits = [
     { 
       title: "Targeted Solutions", 
@@ -86,7 +87,9 @@ const PersonalizedCare = () => {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="px-8 py-3 bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-medium rounded-full shadow-md hover:shadow-lg transform transition-all duration-300 hover:-translate-y-1">
+              <button className="px-8 py-3 bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-medium rounded-full shadow-md hover:shadow-lg transform transition-all duration-300 hover:-translate-y-1"
+                onClick={() => navigate('/quiz')}
+              >
                 Take Skin Quiz
               </button>
               <button className="px-8 py-3 border border-gray-300 text-gray-700 font-medium rounded-full hover:bg-gray-50 hover:border-gray-400 transform transition-all duration-300 hover:-translate-y-1 flex items-center justify-center">

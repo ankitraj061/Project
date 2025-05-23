@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import womenCareImage from '../assets/usepro.jpeg.jpg';
 
 const UseProduct = () => {
   const [isHovered, setIsHovered] = useState(false);
+  const navigate = useNavigate();
   
   const benefits = [
     {
@@ -60,7 +62,9 @@ const UseProduct = () => {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="px-8 py-3 bg-gradient-to-r from-pink-500 to-purple-500 text-white font-medium rounded-full shadow-md hover:shadow-lg transform transition-all duration-300 hover:-translate-y-1">
+              <button className="px-8 py-3 bg-gradient-to-r from-pink-500 to-purple-500 text-white font-medium rounded-full shadow-md hover:shadow-lg transform transition-all duration-300 hover:-translate-y-1"
+                onClick= {() => navigate('/ourproducts')}
+              >
                 Shop Now
               </button>
               <button className="px-8 py-3 border border-gray-300 text-gray-700 font-medium rounded-full hover:bg-gray-50 hover:border-gray-400 transform transition-all duration-300 hover:-translate-y-1 flex items-center justify-center">
