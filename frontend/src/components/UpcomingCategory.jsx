@@ -1,12 +1,8 @@
 // UpcomingCategory.js
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { FiArrowRight, FiClock, FiCalendar, FiStar } from 'react-icons/fi';
 
-// Import your images
-import img1 from '../assets/up1.png'; // Lip Care
-import img2 from '../assets/up2.png'; // Face Mask
-import img3 from '../assets/up3.jpg'; // Eye Care
-import img4 from '../assets/hair.jpeg'; // Hair Care
+
 
 const UpcomingCategory = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -14,7 +10,7 @@ const UpcomingCategory = () => {
   const categories = [
     {
       id: 1,
-      image: img2,
+      image: "https://res.cloudinary.com/djbjfsshe/image/upload/v1748028485/up2_meqqpf.png",
       title: "FACE MASK",
       description: "Rejuvenate your skin with our botanical face masks",
       comingSoon: "Coming June 2025",
@@ -23,7 +19,7 @@ const UpcomingCategory = () => {
     },
     {
       id: 2,
-      image: img1,
+      image: "https://res.cloudinary.com/djbjfsshe/image/upload/v1748028483/up1_ts1h2f.png",
       title: "LIP CARE",
       description: "Nourish and protect with natural lip treatments",
       comingSoon: "Coming July 2025",
@@ -32,7 +28,7 @@ const UpcomingCategory = () => {
     },
     {
       id: 3,
-      image: img3,
+      image: "https://res.cloudinary.com/djbjfsshe/image/upload/v1748028483/up3_fmpf9f.jpg",
       title: "EYE CARE",
       description: "Revitalize tired eyes with our gentle formulas",
       comingSoon: "Coming August 2025",
@@ -41,7 +37,7 @@ const UpcomingCategory = () => {
     },
     {
       id: 4,
-      image: img4,
+      image: "https://res.cloudinary.com/djbjfsshe/image/upload/v1748028507/hair_omhv1f.jpg",
       title: "HAIR CARE",
       description: "Restore shine and strength with botanical extracts",
       comingSoon: "Coming September 2025",

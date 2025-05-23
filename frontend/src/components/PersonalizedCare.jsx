@@ -1,5 +1,4 @@
 import {useNavigate}from 'react-router-dom';
-import personalisedImg from '../assets/personlized.jpg';
 
 const PersonalizedCare = () => {
   const navigate = useNavigate();
@@ -31,7 +30,7 @@ const PersonalizedCare = () => {
             <div className="absolute inset-0 bg-gradient-to-br from-emerald-200 to-emerald-50 rounded-3xl transform rotate-3 scale-105"></div>
             <div className="relative z-10 overflow-hidden rounded-2xl shadow-xl">
               <img
-                src={personalisedImg}
+                src="https://res.cloudinary.com/djbjfsshe/image/upload/v1748029644/personlized_cryyok.jpg"
                 alt="Diverse people with glowing skin"
                 className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
               />
@@ -40,18 +39,7 @@ const PersonalizedCare = () => {
               </div>
             </div>
             
-            {/* Floating badge */}
-            <div className="absolute -bottom-4 -right-4 bg-white rounded-full shadow-lg py-2 px-4 flex items-center">
-              <div className="h-10 w-10 rounded-full bg-emerald-500 flex items-center justify-center mr-3">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-              </div>
-              <div>
-                <p className="text-xs font-semibold text-gray-500">DERMATOLOGIST</p>
-                <p className="text-sm font-bold text-gray-800">APPROVED</p>
-              </div>
-            </div>
+           
           </div>
           
           {/* Content container */}
@@ -104,7 +92,9 @@ const PersonalizedCare = () => {
         
         {/* Testimonial section */}
         <div className="mt-16 bg-white rounded-2xl shadow-lg p-8 relative">
-          <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-emerald-500 rounded-full w-8 h-8 flex items-center justify-center">
+          <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-emerald-500 rounded-full w-8 h-8 flex items-center justify-center"
+          onClick={() => navigate('/reviews')}
+          >
             <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
               <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd"></path>
             </svg>

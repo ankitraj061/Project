@@ -1,218 +1,263 @@
 [
   {
     "id": 1,
-    "name": "Ultra Hydrating Face Cream",
-    "description": "A rich, moisturizing cream that keeps dry skin soft and supple.",
-    "price": "₹799",
-    "rating": 4.2,
-    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1747502347/oily1_uifsra.png",
-    "category": "Normal Skin"
-  },
-  {
-    "id": 2,
-    "name": "Deep Nourishing Body Lotion",
-    "description": "A body lotion infused with shea butter for long-lasting hydration.",
-    "price": "₹499",
-    "rating": 4.5,
-    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1747502372/oily2_p54dfq.png",
-    "category": "Dry Skin"
-  },
-  {
-    "id": 3,
-    "name": "Gentle Hydrating Cleanser",
+    "name": "Hydrating Cleanser",
     "description": "A soap-free cleanser that gently removes impurities while keeping skin hydrated.",
     "price": "₹599",
     "rating": 4.3,
-    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1747502372/oily3_ngd1ag.png",
+    "noOfRating": 841,
+    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1748022720/dry1_ux4fxm.png",
     "category": "Dry Skin"
   },
+ 
   {
-    "id": 4,
-    "name": "Overnight Repair Moisturizer",
-    "description": "A night cream that restores moisture to your skin while you sleep.",
-    "price": "₹899",
-    "rating": 4.7,
-    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1747502374/oily4_bk9wtf.png",
-    "category": "Dry Skin"
-  },
-  {
-    "id": 5,
-    "name": "Hydrating Sheet Mask",
-    "description": "A sheet mask enriched with hyaluronic acid for instant hydration.",
-    "price": "₹199",
-    "rating": 4.4,
-    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1747502377/oily5_k4zibr.png",
-    "category": "Dry Skin"
-  },
-  {
-    "id": 6,
-    "name": "Intense Moisturizing Hand Cream",
-    "description": "A hand cream that soothes dry, cracked hands.",
-    "price": "₹299",
-    "rating": 4.6,
-    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1747502347/oily1_uifsra.png",
-    "category": "Dry Skin"
-  },
-  {
-    "id": 7,
-    "name": "Balancing Face Cleanser",
+    "id": 2,
+    "name": "Balanced Face Cleanser",
     "description": "A gentle cleanser that balances oil and moisture for combination skin.",
     "price": "₹499",
     "rating": 4.4,
-    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1747502372/oily2_p54dfq.png",
+    "noOfRating": 658,
+    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1748009457/combination1_bxhhna.png",
     "category": "Combination Skin"
   },
   {
-    "id": 8,
+    "id": 3,
     "name": "Dual-Action Moisturizer",
     "description": "Moisturizes dry areas while controlling oil in the T-zone.",
     "price": "₹699",
     "rating": 4.8,
-    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1747502372/oily3_ngd1ag.png",
+    "noOfRating": 747,
+    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1748009628/combination2_p5tdtn.png",
     "category": "Combination Skin"
   },
+ 
+ 
+ 
   {
-    "id": 9,
-    "name": "Multi-Action Serum",
-    "description": "A serum that works on both hydration and oil control for combination skin.",
-    "price": "₹799",
-    "rating": 4.3,
-    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1747502374/oily4_bk9wtf.png",
-    "category": "Combination Skin"
-  },
-  {
-    "id": 10,
-    "name": "Exfoliating Scrub",
-    "description": "An exfoliator that works gently for combination skin, balancing both oil and dryness.",
-    "price": "₹499",
-    "rating": 4.6,
-    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1747502377/oily5_k4zibr.png",
-    "category": "Combination Skin"
-  },
-  {
-    "id": 11,
-    "name": "Matte Sunscreen",
-    "description": "A sunscreen with a matte finish, perfect for combination skin.",
-    "price": "₹599",
-    "rating": 4.0,
-    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1747502347/oily1_uifsra.png",
-    "category": "Combination Skin"
-  },
-  {
-    "id": 12,
-    "name": "Gentle Skin Cleanser",
-    "description": "A cleanser designed to gently clean sensitive skin without irritation.",
+    "id": 4,
+    "name": "Gentle Sunscreen",
+    "description": "A sunscreen that protects sensitive skin from UV rays without irritation.",
     "price": "₹499",
     "rating": 4.4,
-    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1747502372/oily2_p54dfq.png",
+    "noOfRating": 717,
+    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1748027145/sens5_ogepso.png",
     "category": "Sensitive Skin"
   },
   {
-    "id": 13,
+    "id": 5,
     "name": "Calm & Soothe Moisturizer",
     "description": "Moisturizes and calms sensitive skin.",
     "price": "₹699",
     "rating": 4.4,
-    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1747502372/oily3_ngd1ag.png",
+    "noOfRating": 664,
+    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1748027144/sens2_tihrmr.png",
     "category": "Sensitive Skin"
   },
   {
-    "id": 14,
-    "name": "Soothing Serum",
-    "description": "A serum that soothes irritated skin.",
+    "id": 6,
+    "name": "Soothing Face Serum",
+    "description": "A Soothing Face Serum that hydates the sensitive skin.",
     "price": "₹799",
     "rating": 4.4,
-    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1747502374/oily4_bk9wtf.png",
+    "noOfRating": 525,
+    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1748027143/sens3_pw3tgg.png",
     "category": "Sensitive Skin"
   },
   {
-    "id": 15,
+    "id": 7,
     "name": "Mild Exfoliator",
     "description": "A gentle exfoliant that doesn’t irritate sensitive skin.",
     "price": "₹499",
     "rating": 4.4,
-    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1747502377/oily5_k4zibr.png",
+    "noOfRating": 608,
+    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1748027144/sens4_qwoz2t.png",
     "category": "Sensitive Skin"
   },
   {
-    "id": 16,
-    "name": "Gentle Sunscreen",
-    "description": "A sunscreen formulated for sensitive skin that provides protection without irritation.",
+    "id": 8,
+    "name": "Gentle Skin Cleanser",
+    "description": "A gentle cleanser that removes impurities without stripping moisture.",
+    
     "price": "₹599",
     "rating": 4.4,
-    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1747502347/oily1_uifsra.png",
+    "noOfRating": 793,
+    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1748027143/sens1_dc0bjv.png",
     "category": "Sensitive Skin"
   },
   {
-    "id": 17,
+    "id": 9,
     "name": "Fresh Face Cleanser",
     "description": "A cleanser that removes oil and leaves the skin feeling fresh.",
     "price": "₹399",
     "rating": 4.3,
-    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1747502372/oily2_p54dfq.png",
+    "noOfRating": 462,
+    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1748025827/oily3_wkf2cg.png",
     "category": "Oily Skin"
   },
   {
-    "id": 18,
+    "id": 10,
     "name": "Oil-Free Moisturizer",
     "description": "A lightweight moisturizer that hydrates without adding excess oil.",
     "price": "₹599",
     "rating": 4.3,
-    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1747502372/oily3_ngd1ag.png",
+    "noOfRating": 507,
+    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1748025828/oily4_qydlcj.png",
     "category": "Oily Skin"
   },
   {
-    "id": 19,
+    "id": 11,
     "name": "Clear Skin Serum",
     "description": "Targets excess oil and helps clear acne-prone skin.",
-    "price": "₹799",
+    "price": "₹259",
     "rating": 4.3,
-    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1747502374/oily4_bk9wtf.png",
+    "noOfRating": 874,
+    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1748026285/oily1_ilpj4x.png",
     "category": "Oily Skin"
   },
   {
-    "id": 20,
+    "id": 12,
     "name": "Pore-Refining Exfoliator",
     "description": "A scrub that removes dead skin and refines pores, helping with oily skin.",
     "price": "₹499",
     "rating": 4.3,
-    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1747502347/oily1_uifsra.png",
+    "noOfRating": 659,
+    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1748007531/oily5_k4zibr_ukncu7.png",
     "category": "Oily Skin"
   },
   {
-    "id": 21,
+    "id": 13,
     "name": "Shine-Free Sunscreen",
     "description": "A non-greasy sunscreen that keeps shine at bay.",
     "price": "₹599",
     "rating": 4.3,
-    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1747502372/oily2_p54dfq.png",
+    "noOfRating": 735,
+    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1748008612/oily2_p54dfq_ijc1mb.png",
     "category": "Oily Skin"
+  },
+  {
+    "id": 14,
+    "name": "Refining Exfolator",
+    "description": "A soap-free cleanser that gently removes impurities while keeping skin hydrated.",
+    "price": "₹599",
+    "rating": 4.3,
+    "noOfRating": 516,
+    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1748008179/combination4_tj0ohh.png",
+    "category": "Combination Skin"
+  },
+  {
+    "id": 15,
+    "name": "Glow Boost Fash Scrum",
+    "description": "A soap-free cleanser that gently removes impurities while keeping skin hydrated.",
+    "price": "₹469",
+    "rating": 4.3,
+    "noOfRating": 603,
+    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1748009785/combination3_dnqtqh.png",
+    "category": "Combination Skin"
+  },
+  {
+    "id": 16,
+    "name": "All in One Sunscreen",
+    "description": "All in one sunscreen that protects and hydrates the skin.",
+    "price": "₹599",
+    "rating": 4.3,
+    "noOfRating": 692,
+    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1748010136/combination5_au1gha.png",
+    "category": "Combination Skin"
+  },
+  {
+    "id": 17,
+    "name": "Deep-Moisture Cream",
+    "description": "A rich cream that provides deep hydration for dry skin.",
+
+    "price": "₹289",
+    "rating": 4.3,
+    "noOfRating": 126,
+    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1748022864/dry2_qewncy.png",
+    "category": "Dry Skin"
+  },
+  {
+    "id":18,
+    "name": "Hydrating-Boost Face Scrum",
+    "description": "A hydrating scrub that gently exfoliates and boosts moisture.",
+    "price": "₹599",
+    "rating": 4.3,
+    "noOfRating": 603,
+    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1748023097/dry3_wdvh2n.png",
+    "category": "Dry Skin"
+  },
+  {
+    "id": 19,
+    "name": "Softening Exfoliator",
+    "description": "A Softening Exfoliator that best for dry skin.",
+    "price": "₹499",
+    "rating": 4.6,
+    "noOfRating": 698,
+    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1748023486/dry4_py6pmr.png",
+    "category": "Dry Skin"
+  },
+  {
+    "id": 20,
+    "name": "Moisturizing Sunscreen",
+    "description": "A sunscreen that hydrates while protecting your skin from UV rays.",
+    "price": "₹269",
+    "rating": 4.3,
+    "noOfRating": 735,
+    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1748023703/dry5_tyl8f6.png",
+    
+    "category": "Dry Skin"
+  },
+  {
+    "id": 21,
+    "name": "Daily Skin Cleanser",
+    "description": "A gentle cleanser that removes impurities without stripping moisture.",
+   
+    "price": "₹599",
+    "rating": 4.3,
+    "noOfRating": 735,
+    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1748023838/normal1_k846ti.png",
+    
+    "category": "Normal Skin"
   },
   {
     "id": 22,
-    "name": "Mattifying Primer",
-    "description": "Prepares the skin for makeup by controlling oil and shine.",
-    "price": "₹699",
-    "rating": 4.3,
-    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1747502372/oily3_ngd1ag.png",
-    "category": "Oily Skin"
+    "name":"Everyday Moisturizer",
+    "description":"A lightweight moisturizer that hydrates and balances normal skin.",
+    "price":"₹459",
+    "rating":4.3,
+    "noOfRating":735,
+    "image":"https://res.cloudinary.com/djbjfsshe/image/upload/v1748023987/normal2_hhy6ak.png",
+    "category":"Normal Skin"
   },
+
   {
     "id": 23,
-    "name": "Deep Cleansing Mask",
-    "description": "A mask that deeply cleanses pores and absorbs excess oil.",
+    "name": "Daily Sunscreen",
+    "description": "A broad-spectrum sunscreen that protects normal skin from UV rays.",
     "price": "₹499",
-    "rating": 4.3,
-    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1747502374/oily4_bk9wtf.png",
-    "category": "Oily Skin"
+    "rating": 4.4,
+    "noOfRating": 658,
+    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1748025042/normal5_hfkbn1.png",
+    "category": "Normal Skin"
+  }, 
+  {
+    "id":24,
+    "name":"Smooth Exfoliator",
+    "description":"A gentle exfoliator that smooths and brightens normal skin.",
+    "price":"₹499",
+    "rating":4.4,
+    "noOfRating":658,
+    "image":"https://res.cloudinary.com/djbjfsshe/image/upload/v1748025042/normal4_arcymy.png",
+    "category":"Normal Skin"
   },
   {
-    "id": 24,
-    "name": "Soothing Toner",
-    "description": "A toner that calms the skin while keeping it oil-free.",
-    "price": "₹399",
-    "rating": 4.3,
-    "image": "https://res.cloudinary.com/djbjfsshe/image/upload/v1747502377/oily5_k4zibr.png",
-    "category": "Oily Skin"
+    "id": 25,
+    "name":"Glow Face Serum",
+    "description":"A serum that enhances the natural glow of normal skin.",
+    "price":"₹259",
+    "rating":4.4,
+    "noOfRating":658,
+    "image":"https://res.cloudinary.com/djbjfsshe/image/upload/v1748025041/normal3_nlv49y.png",
+    "category":"Normal Skin"
   }
+
 ]

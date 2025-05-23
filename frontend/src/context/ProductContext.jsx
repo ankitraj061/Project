@@ -5,20 +5,30 @@ const ProductContext = createContext();
 const ProductContextWrapper = ({ children }) => {
   const [products, setProducts] = useState([]);
 
-  console.log("products in cart", products);
-
   useEffect(() => {
-    let sum = 0;
-    products.forEach((pr) => {
-      if (pr.price && typeof pr.price === "string" && pr.price.includes("₹")) {
-        sum += Number(pr.price.split("₹")[1]);
+    const total = products.reduce((sum, pr) => {
+      if (typeof pr.price === "string") {
+        const numericPrice = parseFloat(pr.price.replace(/[^0-9.]/g, ""));
+        return sum + (numericPrice * (pr.quantity || 1));
       }
-    });
-    console.log("total sum price in cart is", sum);
+      return sum;
+    }, 0);
+    console.log("Total cart price:", total);
   }, [products]);
 
   const addProduct = (product) => {
-    setProducts((prev) => [...prev, product]);
+    setProducts((prev) => {
+      const exists = prev.find((p) => p.id === product.id);
+      if (exists) {
+        return prev.map((p) =>
+          p.id === product.id
+            ? { ...p, quantity: (p.quantity || 1) + (product.quantity || 1) }
+            : p
+        );
+      } else {
+        return [...prev, { ...product, quantity: product.quantity || 1 }];
+      }
+    });
   };
 
   const removeProduct = (id) => {
@@ -26,18 +36,19 @@ const ProductContextWrapper = ({ children }) => {
   };
 
   const updateQuantity = (id, type) => {
-    setProducts((prevProducts) =>
-      prevProducts.map((product) =>
-        product.id === id
-          ? {
-              ...product,
-              quantity:
-                type === "increment"
-                  ? product.quantity + 1
-                  : product.quantity - 1,
-            }
-          : product
-      )
+    setProducts((prev) =>
+      prev.map((product) => {
+        if (product.id !== id) return product;
+        const newQty =
+          type === "increment"
+            ? product.quantity + 1
+            : product.quantity - 1;
+
+        return {
+          ...product,
+          quantity: Math.max(1, newQty), // Prevent less than 1
+        };
+      })
     );
   };
 
@@ -50,8 +61,6 @@ const ProductContextWrapper = ({ children }) => {
   );
 };
 
-export const useCart = () => {
-  return useContext(ProductContext);
-};
+export const useCart = () => useContext(ProductContext);
 
 export default ProductContextWrapper;

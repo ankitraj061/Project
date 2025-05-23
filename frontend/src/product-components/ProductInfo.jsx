@@ -19,12 +19,7 @@ const ProductInfo = ({ product }) => {
         <h1 className="text-2xl md:text-3xl font-bold text-gray-900">{product.name}</h1>
       </div>
       
-      {/* Brand info */}
-      <div>
-        <span className="text-gray-500">Brand: </span>
-        <a href="#" className="text-pink-600 hover:underline">{product.brand || 'Luminosity Beauty'}</a>
-      </div>
-      
+    
       {/* Ratings summary */}
       <div className="flex items-center">
         <div className="flex items-center bg-green-100 text-green-800 px-2 py-1 rounded">

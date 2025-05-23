@@ -1,8 +1,5 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import transparencyImg from '../assets/transparency.jpeg';
-import personalisedImg from '../assets/personalised.jpeg.jpg'; 
-import highQualityImg from '../assets/quality.jpg';
 
 const Intro = () => {
   const [hoveredCard, setHoveredCard] = useState(null);
@@ -13,21 +10,21 @@ const Intro = () => {
       id: 1,
       title: 'Personalised Care',
       description: 'Skincare solutions tailored to your unique needs and concerns',
-      image: personalisedImg,
+      image: "https://res.cloudinary.com/djbjfsshe/image/upload/v1748029495/personalised.jpeg_kxd8zw.jpg",
       icon: '👤'
     },
     {
       id: 2,
       title: 'High Quality Yet Affordable',
       description: 'Premium ingredients and formulations without the premium price tag',
-      image: highQualityImg,
+      image: "https://res.cloudinary.com/djbjfsshe/image/upload/v1748029495/quality_jzn9qw.jpg",
       icon: '✨'
     },
     {
       id: 3,
       title: 'Transparency',
       description: 'Clear information about our ingredients, sourcing, and processes',
-      image: transparencyImg,
+      image: "https://res.cloudinary.com/djbjfsshe/image/upload/v1748029495/transparency_dmm38l.jpg",
       icon: '🔍'
     }
   ];

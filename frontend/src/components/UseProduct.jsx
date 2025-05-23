@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import womenCareImage from '../assets/usepro.jpeg.jpg';
 
 const UseProduct = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -107,7 +106,7 @@ const UseProduct = () => {
               <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-500 hover:scale-105">
                 <img
                   className="w-full h-auto object-cover"
-                  src={womenCareImage}
+                  src="https://res.cloudinary.com/djbjfsshe/image/upload/v1748029926/womenCare_zmpmvr.avif"
                   alt="Woman using skincare product"
                 />
                 
@@ -122,27 +121,15 @@ const UseProduct = () => {
                       <p className="text-lg font-bold text-gray-900">Rejuvenating Night Cream</p>
                     </div>
                     <div className="bg-pink-500 text-white rounded-lg px-3 py-1 text-sm font-bold">
-                      $49.99
+                      49.99
                     </div>
                   </div>
                 </div>
               </div>
               
-              {/* Floating elements */}
-              <div className={`absolute top-8 -right-4 bg-white rounded-xl shadow-lg py-2 px-4 transform transition-all duration-500 ${isHovered ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'}`}>
-                <div className="flex items-center">
-                  <div className="flex -space-x-2 mr-2">
-                    {[...Array(3)].map((_, i) => (
-                      <div key={i} className="h-6 w-6 rounded-full bg-gray-200 border-2 border-white"></div>
-                    ))}
-                  </div>
-                  <p className="text-xs font-medium text-gray-600">500+ reviews</p>
-                </div>
-              </div>
               
-              <div className={`absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-full shadow-lg py-2 px-6 transition-all duration-500 ${isHovered ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                <p className="text-sm font-bold">★★★★★ Top Rated</p>
-              </div>
+              
+             
             </div>
           </div>
         </div>

@@ -1,16 +1,12 @@
 import { useState } from 'react';
-import img1 from '../assets/oily1.png';
-import img2 from '../assets/oily2.png';
-import img3 from '../assets/oily3.png';
-import img4 from '../assets/oily4.png';
-import img5 from '../assets/oily5.png';
+
 
 const categories = [
-  { name: 'CLEANSER', img: img3, description: 'Gentle facial cleansers for oily skin' },
-  { name: 'MOISTURISER', img: img4, description: 'Oil-free hydration for daily use' },
-  { name: 'SERUM', img: img1, description: 'Targeted treatments for oily complexions' },
-  { name: 'EXFOLIATOR', img: img5, description: 'Remove excess oil and dead skin cells' },
-  { name: 'SUNSCREEN', img: img2, description: 'Matte-finish sun protection' },
+  { name: 'CLEANSER', img: "https://res.cloudinary.com/djbjfsshe/image/upload/v1747502372/oily3_ngd1ag.png" , description: 'Gentle facial cleansers for oily skin' },
+  { name: 'MOISTURISER', img: "https://res.cloudinary.com/djbjfsshe/image/upload/v1747502374/oily4_bk9wtf.png", description: 'Oil-free hydration for daily use' },
+  { name: 'SERUM', img: "https://res.cloudinary.com/djbjfsshe/image/upload/v1747502347/oily1_uifsra.png", description: 'Targeted treatments for oily complexions' },
+  { name: 'EXFOLIATOR', img: "https://res.cloudinary.com/djbjfsshe/image/upload/v1747502377/oily5_k4zibr.png", description: 'Remove excess oil and dead skin cells' },
+  { name: 'SUNSCREEN', img: "https://res.cloudinary.com/djbjfsshe/image/upload/v1747502372/oily2_p54dfq.png", description: 'Matte-finish sun protection' },
 ];
 
 const PopularCategory = () => {

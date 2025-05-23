@@ -21,7 +21,7 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold mb-4">Contact</h4>
             <p className="text-gray-400">Email: support@ecoglam.com</p>
-            <p className="text-gray-400">Phone: (555) 123-4567</p>
+            <p className="text-gray-400">Phone: +91 1800 123 456</p>
           </div>
         </div>
         

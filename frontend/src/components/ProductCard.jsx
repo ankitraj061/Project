@@ -32,11 +32,16 @@ const ProductCard = ({ product, isInCart, onAdd, onRemove, showActions = true })
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300"></div>
         <div className="absolute bottom-0 left-0 right-0 p-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <h3 className="text-2xl font-semibold tracking-wide mb-2">{product.name}</h3>
-          <p className="text-sm line-clamp-3 mb-4">{product.description}</p>
+          <h3 className="text-2xl text-gray-700 font-bold tracking-wide mb-2">{product.name}</h3>
+          <p className="text-sm text-gray-600 line-clamp-3 mb-4">{product.description}</p>
           <div className="flex items-center justify-between">
             <p className="text-lg font-bold text-pink-400">{product.price}</p>
-            {renderStars(product.rating)}
+            <div className="flex items-center space-x-2">
+  
+  {renderStars(product.rating)}
+  <span className="text-sm text-gray-200"> ({product.noOfRating}+)</span>
+</div>
+            
           </div>
         </div>
       </Link>
