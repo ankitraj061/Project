@@ -11,7 +11,7 @@ import Delivery from "./components/Delivery";
 import PersonalizedCare from "./components/PersonalizedCare";
 import FAQ from "./components/FAQ";
 import Reviews from "./pages/Reviews";
-import TrackOrder from "./pages/TrackOrder";
+import SomePage from "./pages/SomePage";
 import OilySkin from "./categories/OilySkin";
 import NormalSkin from "./categories/NormalSkin";
 import CombinationSkin from "./categories/CombinationSkin";
@@ -25,6 +25,7 @@ import Cart from "./pages/Cart";
 import ProductDetails from './components/ProductDetails';
 import Categories from "./components/Categories";
 import FaceProductsChatbot from "./components/FaceProductsChatbot";
+import { AuthProvider } from "./context/AuthContext";
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
 
   return (
       <>
+       <AuthProvider>
        
         <Navbar setIsLoginModalOpen={setIsLoginModalOpen}  cartCount={cartCount}/>
         <div className={isLoginModalOpen ? "blur-background" : ""}>
@@ -61,7 +63,10 @@ function App() {
               } />
               <Route path="/ourproducts" element={<OurProducts addToCart={addToCart} />} /> {/* Add the new route here */}
               <Route path="/reviews" element={<Reviews />} /> {/* Add the new route here */}
-              <Route path="/trackorder" element={<TrackOrder />}></Route>
+              
+              <Route path="/trackorder" element={<SomePage />}></Route>
+  
+              
               <Route path="/categories" element={<Categories />}></Route>
               <Route path="/categories/oilyskin" element={<OilySkin  addToCart={addToCart}/>}></Route>
 
@@ -95,6 +100,7 @@ function App() {
           </div>
         )}
         <FaceProductsChatbot></FaceProductsChatbot>
+        </AuthProvider>
       </>
   );
 }

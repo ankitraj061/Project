@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Package, Check, Truck, Clock, Search, ChevronRight } from "lucide-react";
+import { useAuth } from "../context/AuthContext"; // Import the useAuth hook
 
 const orders = [
   {
@@ -60,6 +61,11 @@ const StatusIcon = ({ status }) => {
 };
 
 const OrderCard = ({ order, onExpandClick }) => {
+
+  const { user } = useAuth(); // Access user data from context
+
+
+   
   const getStatusColor = (status) => {
     switch (status) {
       case "Delivered":
