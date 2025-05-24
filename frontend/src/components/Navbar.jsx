@@ -64,7 +64,7 @@ const Navbar = () => {
         const user = {
           email: formData.email,
           token: response.token,
-          name: response.name || "User",
+          name: formData.name || "User",
         };
         localStorage.setItem("isLoggedIn", true);
         localStorage.setItem("userData", JSON.stringify(user));
