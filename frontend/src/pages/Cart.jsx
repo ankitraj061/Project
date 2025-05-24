@@ -76,14 +76,15 @@ const Cart = () => {
   };
 
   const handleCheckout = () => {
-    if (!deliveryAddress) {
-    toast.warning("Please fill the address first.");
-    return;
-  }
       if (!user) {
     toast.error("Please log in to proceed with checkout.");
     return;
   }
+    if (!deliveryAddress) {
+    toast.warning("Please fill the address first.");
+    return;
+  }
+    
    
     setShowPaymentModal(true);
   };
