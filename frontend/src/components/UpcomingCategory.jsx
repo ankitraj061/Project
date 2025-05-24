@@ -37,7 +37,7 @@ const UpcomingCategory = () => {
     },
     {
       id: 4,
-      image: "https://res.cloudinary.com/djbjfsshe/image/upload/v1748028507/hair_omhv1f.jpg",
+      image: "https://res.cloudinary.com/djbjfsshe/image/upload/v1748096356/hair_n2v5ld.jpg",
       title: "HAIR CARE",
       description: "Restore shine and strength with botanical extracts",
       comingSoon: "Coming September 2025",

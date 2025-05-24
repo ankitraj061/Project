@@ -26,6 +26,7 @@ import ProductDetails from './components/ProductDetails';
 import Categories from "./components/Categories";
 import FaceProductsChatbot from "./components/FaceProductsChatbot";
 import { AuthProvider } from "./context/AuthContext";
+import PageNotFound from "./pages/PageNotFound";
 
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
   return (
       <>
        <AuthProvider>
+
        
         <Navbar setIsLoginModalOpen={setIsLoginModalOpen}  cartCount={cartCount}/>
         <div className={isLoginModalOpen ? "blur-background" : ""}>
@@ -51,9 +53,9 @@ function App() {
 
                 <>
                   <Hero />
-                  <Intro />
                   <PopularCategory></PopularCategory>
                   <UpcomingCategory></UpcomingCategory>
+                  <Intro />
                   <Ingredients />
                   <PersonalizedCare></PersonalizedCare>
                   <UseProduct></UseProduct>
@@ -81,6 +83,8 @@ function App() {
               <Route path="/quiz" element={<Quiz />}></Route>
 
               <Route path="/cart" element={<Cart />}></Route>
+
+              <Route path="*" element={<PageNotFound />}></Route>
                <Route path="/product/:id" element={<ProductDetails />} />
             </Routes>
 

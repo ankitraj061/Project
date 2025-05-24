@@ -9,95 +9,120 @@ const MobileMenu = ({
   handleLogout,
   handleUserClick,
   cartCount,
-  handleClose, // <-- Add this
+  handleClose,
 }) => (
-  <div className="lg:hidden bg-white border-t border-gray-200 shadow-md fixed bottom-0 left-0 right-0 z-50 max-h-[80vh] overflow-y-auto">
-    <div className="px-5 py-4 space-y-3">
-      {/* Close Button */}
-      <div className="flex justify-end">
-        <button onClick={handleClose} aria-label="Close Menu">
-          <X className="h-6 w-6 text-gray-700 hover:text-red-600 transition-colors duration-200" />
+  <div className="lg:hidden bg-white border-t border-gray-200 shadow-lg fixed bottom-0 left-0 right-0 z-50 max-h-[85vh] overflow-y-auto">
+    <div className="px-4 py-3 space-y-2">
+      {/* Close Button - Mobile optimized */}
+      <div className="flex justify-end pb-2">
+        <button 
+          onClick={handleClose} 
+          aria-label="Close Menu"
+          className="p-2 -m-2 rounded-full hover:bg-gray-100 transition-colors duration-200"
+        >
+          <X className="h-5 w-5 text-gray-600 hover:text-red-600" />
         </button>
       </div>
 
-      {/* Main Navigation Links */}
-      {navLinks.map((item) =>
-        item.label === "Categories" ? (
-          <div key={item.label} className="py-1">
-            <div className="flex items-center justify-between mb-1">
-              <Link 
-                to={item.link} 
-                className="text-gray-800 font-semibold text-lg hover:text-pink-600 transition-colors duration-200"
+      {/* Main Navigation Links - Mobile optimized spacing */}
+      <div className="space-y-1">
+        {navLinks.map((item) =>
+          item.label === "Categories" ? (
+            <div key={item.label} className="py-1">
+              <Link
+                to={item.link}
+                className="block text-gray-800 font-semibold text-base py-2 hover:text-pink-600 transition-colors duration-200"
+                onClick={handleClose}
               >
                 {item.label}
               </Link>
+              
+              {/* Categories Grid - Mobile optimized */}
+              <div className="ml-3 mt-1 grid grid-cols-1 xs:grid-cols-2 gap-1">
+                {categories.map((category) => (
+                  <Link
+                    key={category.label}
+                    to={category.link}
+                    className="text-gray-600 text-sm hover:text-pink-600 py-1.5 px-2 rounded hover:bg-gray-50 transition-all duration-200"
+                    onClick={handleClose}
+                  >
+                    {category.label}
+                  </Link>
+                ))}
+              </div>
             </div>
-            <div className="ml-4 grid grid-cols-2 gap-2">
-              {categories.map((category) => (
-                <Link
-                  key={category.label}
-                  to={category.link}
-                  className="text-gray-600 text-sm hover:text-pink-600 py-1.5 transition-colors duration-200"
-                >
-                  {category.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-        ) : (
-          <Link
-            key={item.label}
-            to={item.link}
-            className="block text-gray-800 font-medium text-lg hover:text-pink-600 py-2 transition-colors duration-200"
-          >
-            {item.label}
-          </Link>
-        )
-      )}
-      
-      {/* Quiz CTA */}
-      <div className="py-3">
-        <Link to="/quiz">
-          <button className="w-full bg-pink-600 text-white px-4 py-3 rounded-lg hover:bg-pink-700 font-medium text-lg shadow-sm transition-colors duration-200">
+          ) : (
+            <Link
+              key={item.label}
+              to={item.link}
+              className="block text-gray-800 font-medium text-base hover:text-pink-600 py-2 px-2 rounded hover:bg-gray-50 transition-all duration-200"
+              onClick={handleClose}
+            >
+              {item.label}
+            </Link>
+          )
+        )}
+      </div>
+
+      {/* Quiz CTA - Mobile optimized */}
+      <div className="py-2">
+        <Link to="/quiz" onClick={handleClose}>
+          <button className="w-full bg-gradient-to-r from-pink-600 to-pink-700 text-white px-4 py-3 rounded-lg hover:from-pink-700 hover:to-pink-800 font-medium text-base shadow-md transition-all duration-200 active:scale-[0.98]">
             Know Your Skin
           </button>
         </Link>
       </div>
-      
-      {/* Authentication and Cart */}
-      <div className="flex items-center justify-between border-t border-gray-100 pt-3">
-        {isLoggedIn ? (
-          <button 
-            onClick={handleLogout} 
-            className="text-red-600 font-medium py-2 hover:text-red-700 transition-colors duration-200"
-          >
-            Logout
-          </button>
-        ) : (
-          <button 
-            onClick={handleUserClick} 
-            className="text-gray-800 font-medium py-2 hover:text-pink-600 transition-colors duration-200"
-          >
-            Login / Signup
-          </button>
-        )}
-        
-        <Link 
-          to="/cart" 
-          className="flex items-center gap-2 py-2 text-gray-800 hover:text-pink-600 transition-colors duration-200"
-        >
-          <div className="relative">
-            <FiShoppingCart className="text-xl" />
-            {cartCount > 0 && (
-              <span className="absolute -top-2 -right-2 bg-pink-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                {cartCount}
-              </span>
+
+      {/* Authentication and Cart - Mobile optimized layout */}
+      <div className="border-t border-gray-100 pt-3 mt-3">
+        <div className="flex flex-col xs:flex-row xs:items-center xs:justify-between gap-3">
+          {/* Auth Button */}
+          <div className="flex-1">
+            {isLoggedIn ? (
+              <button
+                onClick={() => {
+                  handleLogout();
+                  handleClose();
+                }}
+                className="w-full xs:w-auto text-red-600 font-medium py-2 px-3 rounded hover:bg-red-50 hover:text-red-700 transition-all duration-200 text-center"
+              >
+                Logout
+              </button>
+            ) : (
+              <button
+                onClick={() => {
+                  handleUserClick();
+                  handleClose();
+                }}
+                className="w-full xs:w-auto text-gray-800 font-medium py-2 px-3 rounded hover:bg-gray-50 hover:text-pink-600 transition-all duration-200 text-center"
+              >
+                Login / Signup
+              </button>
             )}
           </div>
-          <span className="font-medium">Cart</span>
-        </Link>
+
+          {/* Cart Button - Mobile optimized */}
+          <Link
+            to="/cart"
+            className="flex items-center justify-center xs:justify-start gap-2 py-2 px-3 text-gray-800 hover:text-pink-600 hover:bg-gray-50 rounded transition-all duration-200"
+            onClick={handleClose}
+          >
+            <div className="relative">
+              <FiShoppingCart className="text-lg" />
+              {cartCount > 0 && (
+                <span className="absolute -top-1.5 -right-1.5 bg-pink-600 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center font-medium min-w-[16px]">
+                  {cartCount > 99 ? '99+' : cartCount}
+                </span>
+              )}
+            </div>
+            <span className="font-medium text-sm">Cart</span>
+          </Link>
+        </div>
       </div>
     </div>
+
+    {/* Safe area padding for iOS devices */}
+    <div className="pb-safe"></div>
   </div>
 );
 
