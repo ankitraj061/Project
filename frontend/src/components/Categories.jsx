@@ -9,7 +9,6 @@ const skinCategories = [
     image: 'https://res.cloudinary.com/djbjfsshe/image/upload/v1747859156/oily_wcubgq.webp',
     route: '/categories/oilyskin',
     color: 'from-emerald-400 to-teal-500',
-    icon: '💧',
   },
   {
     name: 'Normal Skin',
@@ -17,7 +16,6 @@ const skinCategories = [
     image: 'https://res.cloudinary.com/djbjfsshe/image/upload/v1747859558/normal_c8ubh0.webp',
     route: '/categories/normalskin',
     color: 'from-blue-400 to-indigo-500',
-    icon: '✨',
   },
   {
     name: 'Sensitive Skin',
@@ -25,7 +23,6 @@ const skinCategories = [
     image: 'https://res.cloudinary.com/djbjfsshe/image/upload/v1747859374/sensitive_umqu8n.jpg',
     route: '/categories/sensitiveskin',
     color: 'from-rose-400 to-pink-500',
-    icon: '🌸',
   },
   {
     name: 'Combination Skin',
@@ -33,7 +30,6 @@ const skinCategories = [
     image: 'https://res.cloudinary.com/djbjfsshe/image/upload/v1747859373/combination_rdawe9.webp',
     route: '/categories/combinationskin',
     color: 'from-amber-400 to-orange-500',
-    icon: '☯️',
   },
   {
     name: 'Dry Skin',
@@ -41,7 +37,6 @@ const skinCategories = [
     image: 'https://res.cloudinary.com/djbjfsshe/image/upload/v1747859374/dry_detwkw.webp',
     route: '/categories/dryskin',
     color: 'from-purple-400 to-violet-500',
-    icon: '🌵',
   },
 ];
 
