@@ -27,6 +27,7 @@ import Categories from "./components/Categories";
 import FaceProductsChatbot from "./components/FaceProductsChatbot";
 import { AuthProvider } from "./context/AuthContext";
 import PageNotFound from "./pages/PageNotFound";
+import ScrollToTop from "./pages/ScrollToTop";
 
 
 function App() {
@@ -47,8 +48,10 @@ function App() {
         <Navbar setIsLoginModalOpen={setIsLoginModalOpen}  cartCount={cartCount}/>
         <div className={isLoginModalOpen ? "blur-background" : ""}>
           <main className="app-main">
+            <ScrollToTop />
             <Routes>
               {/* Add your other routes here */}
+              
               <Route path="/" element={
 
                 <>
