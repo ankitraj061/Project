@@ -1,7 +1,7 @@
 // src/components/AuthModal.jsx
 import React, { useState } from "react";
 import { X, Loader2 } from "lucide-react";
-import {useAuth } from "../context/AuthContext"; // Import the useAuth hook
+
 
 const AuthModal = ({
   isLoginForm,
@@ -12,15 +12,14 @@ const AuthModal = ({
   handleUserClick,
 }) => {
   const [loading, setLoading] = useState(false);
-  const {login }= useAuth(); 
+  
 
 
   const onSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     try {
-       const userData = await handleSubmit(e); // make sure this returns user info
-      login(userData); // store user info in global state
+      await handleSubmit(e);
     } finally {
       setLoading(false);
     }
