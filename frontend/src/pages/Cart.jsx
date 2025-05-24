@@ -10,6 +10,8 @@ import ProductList from "../components/cart/ProductList";
 import OrderSummary from "../components/cart/OrderSummary";
 import ShippingInfo from "../components/cart/ShippingInfo";
 import PaymentModal from "../components/cart/PaymentModal";
+import { useAuth } from "../context/AuthContext";
+import { toast } from "react-toastify";
 
 const Cart = () => {
   const { products, updateQuantity, removeProduct, clearCart } = useCart();
@@ -22,6 +24,10 @@ const Cart = () => {
   const [orderPlaced, setOrderPlaced] = useState(false);
   const [orderNumber, setOrderNumber] = useState("");
   const navigate = useNavigate();
+  const { user } = useAuth(); // Get user data from AuthContext
+
+  const [deliveryAddress, setDeliveryAddress] = useState(null);
+
 
   // Parse price from string
   const parsePrice = (priceStr) => {
@@ -70,6 +76,15 @@ const Cart = () => {
   };
 
   const handleCheckout = () => {
+    if (!deliveryAddress) {
+    toast.warning("Please fill the address first.");
+    return;
+  }
+      if (!user) {
+    toast.error("Please log in to proceed with checkout.");
+    return;
+  }
+   
     setShowPaymentModal(true);
   };
 
@@ -124,7 +139,8 @@ const Cart = () => {
           <div className="flex flex-col lg:flex-row gap-8">
             {/* Left: Delivery Address Only */}
             <div className="w-full lg:w-1/3">
-              <DeliveryAddress onSave={(address) => console.log("Address saved:", address)} />
+              <DeliveryAddress onSave={(address) => setDeliveryAddress(address)} />
+
             </div>
 
             {/* Right: Product List and Order Summary */}

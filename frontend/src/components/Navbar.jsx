@@ -61,7 +61,7 @@ const Navbar = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (isLoginForm) {
-      userLogin(true);
+      
       try {
         const response = await login({
           email: formData.email,
@@ -76,6 +76,7 @@ const Navbar = () => {
         localStorage.setItem("userData", JSON.stringify(user));
         setUserData(user);
         toast.success("Login successful!");
+        userLogin(true);
       } catch (error) {
         toast.error(error.message || "Login failed");
       }

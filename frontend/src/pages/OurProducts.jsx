@@ -146,7 +146,7 @@ const OurProducts = () => {
           {/* Sidebar */}
           <div className={`${isSidebarOpen ? 'fixed inset-0 z-50 bg-black bg-opacity-50 md:relative md:bg-transparent' : 'hidden'} md:block`}>
             <div className={`${isSidebarOpen ? 'fixed right-0 top-0 h-full w-80 bg-white shadow-2xl transform translate-x-0' : ''} md:relative md:w-72 md:shadow-none`}>
-              <div className="bg-white rounded-xl shadow-lg p-6 sticky top-4 max-h-[calc(100vh-2rem)] overflow-y-auto">
+              <div className="bg-white rounded-xl shadow-lg p-6 sticky top-4 max-h-[calc(200vh-4rem)] overflow-y-auto">
                 
                 {/* Mobile Header */}
                 <div className="md:hidden flex items-center justify-between mb-6 pb-4 border-b">
