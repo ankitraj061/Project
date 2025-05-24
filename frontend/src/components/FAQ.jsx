@@ -3,7 +3,7 @@ import { ChevronDown, ChevronUp } from 'lucide-react';
 
 const faqs = [
   {
-    question: 'What is personalized skincare?',
+    question: 'What is skincare?',
     answer: 'Personalized skincare products are formulated to suit your unique skin type and concerns. Our skin quiz helps us understand your needs.',
   },
   {
