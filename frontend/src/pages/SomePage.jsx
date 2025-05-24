@@ -16,12 +16,7 @@ const SomePage = () => {
           <p className="text-gray-600 mb-4">
             You must be logged in to view your orders.
           </p>
-          <a
-            href="/login"
-            className="inline-block px-5 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition"
-          >
-            Go to Login
-          </a>
+         
         </div>
       )}
     </div>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaRegUser } from "react-icons/fa";
@@ -8,19 +8,17 @@ import { FiShoppingCart } from "react-icons/fi";
 import AuthModal from "./AuthModal";
 import NavLinks from "./NavLinks";
 import MobileMenu from "./MobileMenu";
-import ProfileDropdown from './ProfileDropdown';
+import ProfileDropdown from './ProfileDropdown'
 import { signup, login } from "../api";
 import { useCart } from "../context/ProductContext";
 
 const Navbar = () => {
   const { products } = useCart();
-  const location = useLocation();
-  const navigate = useNavigate();
 
   const [userData, setUserData] = useState(null);
-  const [isOpen, setIsOpen] = useState(false); // Mobile menu
+  const [isOpen, setIsOpen] = useState(false); // Mobile menu state
   const [isFormOpen, setIsFormOpen] = useState(false); // Auth modal
-  const [isLoginForm, setIsLoginForm] = useState(true); // Login/Signup toggle
+  const [isLoginForm, setIsLoginForm] = useState(true); // Login/signup toggle
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -50,29 +48,13 @@ const Navbar = () => {
     }
   }, []);
 
-  // Auto open modal when route is /login or /signup
-  useEffect(() => {
-    if (location.pathname === "/login") {
-      setIsLoginForm(true);
-      setIsFormOpen(true);
-    } else if (location.pathname === "/signup") {
-      setIsLoginForm(false);
-      setIsFormOpen(true);
-    }
-  }, [location.pathname]);
-
-  const handleUserClick = () => {
-    setIsFormOpen(!isFormOpen);
-  };
-
+  const handleUserClick = () => setIsFormOpen(!isFormOpen);
   const handleFormToggle = () => setIsLoginForm(!isLoginForm);
 
-  const handleInputChange = (e) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleInputChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (isLoginForm) {
       try {
         const response = await login({
@@ -88,8 +70,6 @@ const Navbar = () => {
         localStorage.setItem("userData", JSON.stringify(user));
         setUserData(user);
         toast.success("Login successful!");
-        setIsFormOpen(false);
-        navigate("/"); // Redirect after login
       } catch (error) {
         toast.error(error.message || "Login failed");
       }
@@ -105,12 +85,11 @@ const Navbar = () => {
           password: formData.password,
         });
         toast.success("Signup successful!");
-        setIsLoginForm(true); // Switch to login form
-        navigate("/login"); // Redirect to login path
       } catch (error) {
         toast.error(error.message || "Signup failed");
       }
     }
+    setIsFormOpen(false);
   };
 
   const handleLogout = () => {
@@ -126,7 +105,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="text-3xl font-bold font-serif text-emerald-600">EcoGlam</Link>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Links */}
           <div className="hidden lg:flex lg:items-center space-x-3">
             <NavLinks navLinks={navLinks} categories={categories} />
             <Link to="/quiz">
@@ -138,9 +117,9 @@ const Navbar = () => {
             {userData ? (
               <ProfileDropdown userData={userData} handleLogout={handleLogout} />
             ) : (
-              <Link to="/login" className="ml-2 text-black px-4 py-2 rounded-lg">
+              <button onClick={handleUserClick} className="ml-2 text-black px-4 py-2 rounded-lg">
                 <FaRegUser />
-              </Link>
+              </button>
             )}
 
             <Link to="/cart">
@@ -163,17 +142,18 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu */}
-      {isOpen && (
-        <MobileMenu
-          navLinks={navLinks}
-          categories={categories}
-          isLoggedIn={!!userData}
-          handleLogout={handleLogout}
-          handleUserClick={handleUserClick}
-          cartCount={products.length}
-          handleClose={() => setIsOpen(false)}
-        />
-      )}
+     {isOpen && (
+  <MobileMenu
+    navLinks={navLinks}
+    categories={categories}
+    isLoggedIn={!!userData}
+    handleLogout={handleLogout}
+    handleUserClick={handleUserClick}
+    cartCount={products.length}
+    handleClose={() => setIsOpen(false)} // <-- pass close function
+  />
+)}
+
 
       {/* Auth Modal */}
       {isFormOpen && (
