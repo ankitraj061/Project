@@ -24,7 +24,7 @@ const Intro = () => {
       id: 3,
       title: 'Transparency',
       description: 'Clear information about our ingredients, sourcing, and processes',
-      image: "https://res.cloudinary.com/djbjfsshe/image/upload/v1748029495/transparency_dmm38l.jpg",
+      image: "https://res.cloudinary.com/djbjfsshe/image/upload/v1748067089/transparency-image2_ksvfo3.jpg",
       icon: '🔍'
     }
   ];
