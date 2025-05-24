@@ -30,6 +30,7 @@ import PageNotFound from "./pages/PageNotFound";
 import ScrollToTop from "./pages/ScrollToTop";
 
 
+
 function App() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
@@ -44,7 +45,7 @@ function App() {
       <>
        <AuthProvider>
 
-       
+        
         <Navbar setIsLoginModalOpen={setIsLoginModalOpen}  cartCount={cartCount}/>
         <div className={isLoginModalOpen ? "blur-background" : ""}>
           <main className="app-main">
