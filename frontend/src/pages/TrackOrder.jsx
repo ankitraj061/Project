@@ -65,7 +65,13 @@ const OrderCard = ({ order, onExpandClick }) => {
   const { user } = useAuth(); // Access user data from context
 
 
-   
+   if (!user) {
+    return (
+      <div className="text-center mt-20 text-gray-700">
+        <p>You must be logged in to view your orders.</p>
+      </div>
+    );
+  }
   const getStatusColor = (status) => {
     switch (status) {
       case "Delivered":
@@ -119,13 +125,7 @@ const OrderCard = ({ order, onExpandClick }) => {
         
         <p className="text-gray-700 text-sm">{order.details}</p>
         
-        <button 
-          onClick={() => onExpandClick(order.id)}
-          className="mt-4 text-blue-600 text-sm font-medium flex items-center hover:text-blue-800 transition-colors"
-        >
-          View tracking details
-          <ChevronRight size={16} className="ml-1" />
-        </button>
+       
       </div>
     </div>
   );

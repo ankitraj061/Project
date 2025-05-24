@@ -17,6 +17,7 @@ import { useAuth } from "../context/AuthContext"; // Uncomment if using AuthCont
 const Navbar = () => {
   const { products } = useCart();
    const userLogin = useAuth().login;
+   const userLogout = useAuth().logout;
  
 
   const [userData, setUserData] = useState(null);
@@ -102,6 +103,7 @@ const Navbar = () => {
     localStorage.removeItem("userData");
     setUserData(null);
     toast.success("Logged out successfully!");
+    userLogout();
   };
 
   return (
