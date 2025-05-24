@@ -10,7 +10,7 @@ const Intro = () => {
       id: 1,
       title: 'Personalised Care',
       description: 'Skincare solutions tailored to your unique needs and concerns',
-      image: "https://res.cloudinary.com/djbjfsshe/image/upload/v1748029495/personalised.jpeg_kxd8zw.jpg",
+      image: "https://res.cloudinary.com/djbjfsshe/image/upload/v1748096849/personalisedCare_zaq6z3.jpg",
       icon: '👤'
     },
     {
