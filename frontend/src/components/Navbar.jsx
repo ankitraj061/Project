@@ -11,11 +11,13 @@ import MobileMenu from "./MobileMenu";
 import ProfileDropdown from './ProfileDropdown'
 import { signup, login } from "../api";
 import { useCart } from "../context/ProductContext";
-import {useAuth} from "../context/AuthContext"; // Assuming you have a user context for authentication
+import { useAuth } from "../context/AuthContext"; // Uncomment if using AuthContext
+
 
 const Navbar = () => {
   const { products } = useCart();
-  const {login} = useAuth();
+   const userLogin = useAuth().login;
+ 
 
   const [userData, setUserData] = useState(null);
   const [isOpen, setIsOpen] = useState(false); // Mobile menu state
@@ -58,8 +60,8 @@ const Navbar = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (isLoginForm) {
+      userLogin(true);
       try {
-        login(true)
         const response = await login({
           email: formData.email,
           password: formData.password,
