@@ -36,6 +36,27 @@ function SkincareQuiz() {
   const questions = [
     {
       id: 1,
+      question: "What is your gender?",
+      options: [
+        { text: "Male", emoji: "👨" },
+        { text: "Female", emoji: "👩" }
+      ],
+    },
+
+    {
+      id: 2,
+      question: "In which climate do you live?",
+      options: [
+        { text: "Hot and Dry", emoji: "🌵" },
+        { text: "Hot and Humid", emoji: "🌴" },
+        { text: "Cold and Dry", emoji: "❄️" },
+        { text: "Cool and Humid", emoji: "🌫️" },
+        { text: "Temperate/Moderate", emoji: "🌤️" },
+      ],
+    },
+
+    {
+      id: 3,
       question: "How does your skin feel after washing it?",
       options: [
         { text: "Tight and dry", emoji: "😣" },
@@ -44,8 +65,9 @@ function SkincareQuiz() {
         { text: "Dry in some areas and oily in others", emoji: "🤔" },
       ],
     },
+
     {
-      id: 2,
+      id: 4,
       question: "How often does your skin feel oily during the day?",
       options: [
         { text: "Rarely or never", emoji: "😌" },
@@ -55,7 +77,7 @@ function SkincareQuiz() {
       ],
     },
     {
-      id: 3,
+      id: 5,
       question: "Do you experience redness or irritation on your skin?",
       options: [
         { text: "Often - my skin is very sensitive", emoji: "😖" },
@@ -65,7 +87,7 @@ function SkincareQuiz() {
       ],
     },
     {
-      id: 4,
+      id: 6,
       question: "How would you describe your pores?",
       options: [
         { text: "Barely visible", emoji: "✨" },
@@ -75,7 +97,7 @@ function SkincareQuiz() {
       ],
     },
     {
-      id: 5,
+      id: 7,
       question: "What's your main skin concern?",
       options: [
         { text: "Dryness and flaking", emoji: "🏜️" },
